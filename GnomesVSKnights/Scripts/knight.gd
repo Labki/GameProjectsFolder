@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: int = 500
+@export var speed: int = 150
 
 func _ready():
 	position = Vector2(150, 360)
