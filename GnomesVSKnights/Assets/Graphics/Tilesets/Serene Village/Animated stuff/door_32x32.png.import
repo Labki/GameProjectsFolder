@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxkjlq5ad3oh8"
-path="res://.godot/imported/dust_particles_01.png-c140bc0b4677de54dfc2d87e6d2de9d6.ctex"
+uid="uid://bcmnd0egk8tkb"
+path="res://.godot/imported/door_32x32.png-afa8fa7a3ebecf62a1090395f83c2e5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Particles/Sprite/dust_particles_01.png"
-dest_files=["res://.godot/imported/dust_particles_01.png-c140bc0b4677de54dfc2d87e6d2de9d6.ctex"]
+source_file="res://Assets/Graphics/Tilesets/Serene Village/Animated stuff/door_32x32.png"
+dest_files=["res://.godot/imported/door_32x32.png-afa8fa7a3ebecf62a1090395f83c2e5f.ctex"]
 
 [params]
 

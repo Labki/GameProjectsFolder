@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxkjlq5ad3oh8"
-path="res://.godot/imported/dust_particles_01.png-c140bc0b4677de54dfc2d87e6d2de9d6.ctex"
+uid="uid://42d26wfi3olq"
+path="res://.godot/imported/campfire_32x32.png-f0c6ba714d14bf9970d34d5cf9b746a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Particles/Sprite/dust_particles_01.png"
-dest_files=["res://.godot/imported/dust_particles_01.png-c140bc0b4677de54dfc2d87e6d2de9d6.ctex"]
+source_file="res://Assets/Graphics/Tilesets/Serene Village/Animated stuff/campfire_32x32.png"
+dest_files=["res://.godot/imported/campfire_32x32.png-f0c6ba714d14bf9970d34d5cf9b746a1.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxkjlq5ad3oh8"
-path="res://.godot/imported/dust_particles_01.png-c140bc0b4677de54dfc2d87e6d2de9d6.ctex"
+uid="uid://dbbakvdruxncs"
+path="res://.godot/imported/rock_in_water_05.png-e89902af401f423db6471db44187c239.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Particles/Sprite/dust_particles_01.png"
-dest_files=["res://.godot/imported/dust_particles_01.png-c140bc0b4677de54dfc2d87e6d2de9d6.ctex"]
+source_file="res://Assets/Graphics/Tilesets/Mystic Woods/Terrain/rock_in_water_05.png"
+dest_files=["res://.godot/imported/rock_in_water_05.png-e89902af401f423db6471db44187c239.ctex"]
 
 [params]
 

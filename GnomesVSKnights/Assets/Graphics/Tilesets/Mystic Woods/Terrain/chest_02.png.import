@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxkjlq5ad3oh8"
-path="res://.godot/imported/dust_particles_01.png-c140bc0b4677de54dfc2d87e6d2de9d6.ctex"
+uid="uid://cq87w7w31lubj"
+path="res://.godot/imported/chest_02.png-2043fb78f48a4622671b68c2db58c7eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Particles/Sprite/dust_particles_01.png"
-dest_files=["res://.godot/imported/dust_particles_01.png-c140bc0b4677de54dfc2d87e6d2de9d6.ctex"]
+source_file="res://Assets/Graphics/Tilesets/Mystic Woods/Terrain/chest_02.png"
+dest_files=["res://.godot/imported/chest_02.png-2043fb78f48a4622671b68c2db58c7eb.ctex"]
 
 [params]
 
