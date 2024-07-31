@@ -355,6 +355,7 @@ animations = [{
 [node name="Knight" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_0anl7")
+speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uy7u4")
