@@ -9,10 +9,16 @@ func _ready():
 func _process(delta):
 	var direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 	if direction.x != 0 || direction.y != 0:
-		if direction.x > 0 || direction.y < 0:
-			current_dir = "dirRight"
-		elif direction.x < 0 || direction.y > 0:
-			current_dir = "dirLeft"
+		if direction.x != 0:
+			if direction.x > 0:
+				current_dir = "dirRight"
+			elif direction.x < 0:
+				current_dir = "dirLeft"
+		else:
+			if direction.y < 0:
+				current_dir = "dirRight"
+			elif direction.y > 0:
+				current_dir = "dirLeft"
 		play_anim(1)
 	else:
 		play_anim(0)
