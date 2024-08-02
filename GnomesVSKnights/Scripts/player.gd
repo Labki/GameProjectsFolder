@@ -1,36 +1,50 @@
 extends CharacterBody2D
 
+var enemy_inRange = false
+var attack_cooldown = true
+var health = 100
+var player_alive = true
+
 @export var speed: int = 100
-var current_dir: String = "side"
-var flipHor: bool = false
 @onready var animator = $PlayerSprite
+var newMovement: Node
+
 func _ready():
-	animator.play(current_dir + "_idle")
 	position = Vector2(125, 375)
 	
-func _process(delta):
+func _physics_process(delta):
 	var direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
-	if direction.x != 0 || direction.y != 0:
-		if direction.x != 0:
-			current_dir = "side"
-			if direction.x > 0:
-				flipHor = false
-			elif direction.x < 0:
-				flipHor = true
-		else:
-			if direction.y < 0:
-				current_dir = "back"
-			elif direction.y > 0:
-				current_dir = "front"
-		play_anim("walk")
-	else:
-		play_anim("idle")
-	velocity = direction * speed
-	move_and_slide()
+	CharacterMovement.setMovement(self, direction, animator, speed)
+	attack()
+	
+	if health <= 0:
+		player_alive = false
+		health = 0
+		print("Player has been killed")
+		self.queue_free()
 
-func play_anim(movement):
-	if movement == "walk":
-		animator.flip_h = flipHor
-		animator.play(current_dir + "_" + movement)
-	elif movement == "idle":
-		animator.play(current_dir + "_" + movement)
+func _input(event):
+	if event.is_action_pressed("Attack"):
+		print("left click")
+
+func _on_player_hitbox_body_entered(body):
+	if body.has_method("enemy"):
+		enemy_inRange = true
+
+func player():
+	pass
+
+func _on_player_hitbox_body_exited(body):
+	if body.has_method("enemy"):
+		enemy_inRange = false
+
+func attack():
+	if enemy_inRange and attack_cooldown:
+		health = health - 20
+		attack_cooldown = false
+		$attack_cooldown.start()
+		print("Health ", health)
+
+
+func _on_attack_cooldown_timeout():
+	attack_cooldown = true
