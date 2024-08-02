@@ -1,6 +1,6 @@
 [gd_scene load_steps=56 format=3 uid="uid://c7hjd5ytrwmdo"]
 
-[ext_resource type="Script" path="res://Scripts/knight.gd" id="1_0anl7"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_0anl7"]
 [ext_resource type="Texture2D" uid="uid://bslnj3vtstgfm" path="res://Assets/Graphics/Characters/Mystic Woods/player.png" id="2_xpir8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uy7u4"]
@@ -416,7 +416,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Knight" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_0anl7")
 
@@ -424,7 +424,7 @@ script = ExtResource("1_0anl7")
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_uy7u4")
 
-[node name="KnightSprite" type="AnimatedSprite2D" parent="."]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 8)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ptrey")

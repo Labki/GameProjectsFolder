@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://r1m74e06yiqr"]
 
-[ext_resource type="PackedScene" uid="uid://c7hjd5ytrwmdo" path="res://Scenes/knight.tscn" id="1_bdh4u"]
-[ext_resource type="Texture2D" uid="uid://3eojlt08par4" path="res://Assets/Graphics/Objects/Tileset/Serene Village 32x32.png" id="2_sgn3w"]
+[ext_resource type="PackedScene" uid="uid://c7hjd5ytrwmdo" path="res://Scenes/player.tscn" id="1_bdh4u"]
+[ext_resource type="Texture2D" uid="uid://3eojlt08par4" path="res://Assets/Graphics/Tilesets/Serene Village/Full Tileset/Serene Village 32x32.png" id="2_sgn3w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_23m7l"]
 texture = ExtResource("2_sgn3w")
@@ -1204,4 +1204,5 @@ position = Vector2(640, 725)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Bottom"]
 shape = SubResource("RectangleShape2D_al812")
 
-[node name="Knight" parent="." instance=ExtResource("1_bdh4u")]
+[node name="Player" parent="." instance=ExtResource("1_bdh4u")]
+scale = Vector2(3.5, 3.5)
