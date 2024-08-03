@@ -1215,11 +1215,14 @@ enemy_character = NodePath("Slime")
 patrol_route = NodePath("PatrolPoints")
 
 [node name="Slime" parent="Enemy" instance=ExtResource("3_kwyd4")]
+scale = Vector2(1.5, 1.5)
 speed = 75
 
 [node name="PatrolPoints" type="Node2D" parent="Enemy"]
 
-[node name="Position2D" type="Node2D" parent="Enemy/PatrolPoints"]
+[node name="Position2D0" type="Node2D" parent="Enemy/PatrolPoints"]
+
+[node name="Position2D1" type="Node2D" parent="Enemy/PatrolPoints"]
 position = Vector2(25, -70)
 
 [node name="Position2D2" type="Node2D" parent="Enemy/PatrolPoints"]

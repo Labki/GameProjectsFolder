@@ -3,14 +3,16 @@ extends Node2D
 @export var enemy_character: NodePath
 @export var patrol_route: NodePath
 @export var speed: int
+@export var pauseUponReachingPoint: bool = false
 
 var player = null
 var patrol_points = []
-var current_point = 0
+var current_point = null
 var direction = Vector2()
 var state_machine = null
 var patrol_state = null
 var chase_state = null
+var idle_state = null
 var character: CharacterBody2D
 
 func _ready():
@@ -27,10 +29,14 @@ func _ready():
 
 	patrol_state = Global.patrol_state.new()
 	chase_state = Global.chase_state.new()
+	idle_state = Global.idle_state.new()
 	
 	state_machine = patrol_state
 	state_machine.enter(self)
 
+	character.detection_area.connect("body_entered", Callable(self, "_on_detection_area_body_entered"))
+	character.detection_area.connect("body_exited", Callable(self, "_on_detection_area_body_exited"))
+	
 func _physics_process(delta):
 	state_machine.update(delta)
 
@@ -51,6 +57,10 @@ func change_state(new_state):
 	state_machine.exit()
 	state_machine = new_state
 	state_machine.enter(self)
-
+	
+func update_direction():
+	if patrol_points.size() > 0:
+		direction = (patrol_points[current_point] - character.position).normalized()
+		
 func enemy():
 	pass
