@@ -20,7 +20,7 @@ func setMovement(node: CharacterBody2D, direction: Vector2, animator: AnimatedSp
 	else:
 		play_anim("idle", animator)
 	var target_velocity = direction.normalized() * speed
-	node.velocity = node.velocity.lerp(target_velocity, 0.1)
+	node.velocity = node.velocity.lerp(target_velocity, 0.07)
 	node.move_and_slide()
 
 func play_anim(movement, animator):

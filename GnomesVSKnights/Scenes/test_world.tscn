@@ -1213,6 +1213,7 @@ scale = Vector2(2, 2)
 position = Vector2(335, 150)
 enemy_character = NodePath("Slime")
 patrol_route = NodePath("PatrolPoints")
+pauseUponReachingPoint = true
 
 [node name="Slime" parent="Enemy" instance=ExtResource("3_kwyd4")]
 scale = Vector2(1.5, 1.5)
