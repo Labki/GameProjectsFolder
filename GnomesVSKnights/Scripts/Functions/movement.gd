@@ -19,12 +19,13 @@ func setMovement(node: CharacterBody2D, direction: Vector2, animator: AnimatedSp
 		play_anim("walk", animator)
 	else:
 		play_anim("idle", animator)
-	node.velocity = direction.normalized() * speed
+	var target_velocity = direction.normalized() * speed
+	node.velocity = node.velocity.lerp(target_velocity, 0.1)
 	node.move_and_slide()
 
 func play_anim(movement, animator):
+	var anim_name = current_dir + "_" + movement
 	if movement == "walk":
 		animator.flip_h = flipHor
-		animator.play(current_dir + "_" + movement)
-	elif movement == "idle":
-		animator.play(current_dir + "_" + movement)
+	if animator.animation != anim_name:
+		animator.play(anim_name)

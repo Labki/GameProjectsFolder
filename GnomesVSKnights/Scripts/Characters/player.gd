@@ -26,6 +26,12 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("Attack"):
 		print("left click")
+	if event.is_action_pressed("Run"):
+		print("run")
+	if event.is_action_pressed("Crouch"):
+		print("Crouch")
+	if event.is_action_pressed("Jump"):
+		print("Jump")
 
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("enemy"):

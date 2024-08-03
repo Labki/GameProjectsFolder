@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo683vu6grj6t"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_7xtkm"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_7xtkm")
+
+[node name="EnemyCharacter" type="CharacterBody2D" parent="."]
+
+[node name="PatrolRoute" type="Node2D" parent="."]

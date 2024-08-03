@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://r1m74e06yiqr"]
+[gd_scene load_steps=9 format=3 uid="uid://r1m74e06yiqr"]
 
 [ext_resource type="PackedScene" uid="uid://c7hjd5ytrwmdo" path="res://Scenes/player.tscn" id="1_bdh4u"]
 [ext_resource type="Texture2D" uid="uid://3eojlt08par4" path="res://Assets/Graphics/Tilesets/Serene Village/Full Tileset/Serene Village 32x32.png" id="2_sgn3w"]
 [ext_resource type="PackedScene" uid="uid://c7otkw8edr0o3" path="res://Scenes/slime.tscn" id="3_kwyd4"]
+[ext_resource type="PackedScene" uid="uid://bo683vu6grj6t" path="res://Scenes/enemy.tscn" id="3_pd5hq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_23m7l"]
 texture = ExtResource("2_sgn3w")
@@ -1208,6 +1209,33 @@ shape = SubResource("RectangleShape2D_al812")
 [node name="Player" parent="." instance=ExtResource("1_bdh4u")]
 scale = Vector2(2, 2)
 
-[node name="Slime" parent="." instance=ExtResource("3_kwyd4")]
-position = Vector2(333, 147)
-scale = Vector2(1.5, 1.5)
+[node name="Enemy" parent="." instance=ExtResource("3_pd5hq")]
+position = Vector2(335, 150)
+enemy_character = NodePath("Slime")
+patrol_route = NodePath("PatrolPoints")
+
+[node name="Slime" parent="Enemy" instance=ExtResource("3_kwyd4")]
+speed = 75
+
+[node name="PatrolPoints" type="Node2D" parent="Enemy"]
+
+[node name="Position2D" type="Node2D" parent="Enemy/PatrolPoints"]
+position = Vector2(25, -70)
+
+[node name="Position2D2" type="Node2D" parent="Enemy/PatrolPoints"]
+position = Vector2(175, -70)
+
+[node name="Position2D3" type="Node2D" parent="Enemy/PatrolPoints"]
+position = Vector2(0, -55)
+
+[node name="Position2D4" type="Node2D" parent="Enemy/PatrolPoints"]
+position = Vector2(0, 55)
+
+[node name="Position2D5" type="Node2D" parent="Enemy/PatrolPoints"]
+position = Vector2(-80, 60)
+
+[node name="Position2D6" type="Node2D" parent="Enemy/PatrolPoints"]
+position = Vector2(80, 60)
+
+[node name="Position2D7" type="Node2D" parent="Enemy/PatrolPoints"]
+position = Vector2(0, 60)

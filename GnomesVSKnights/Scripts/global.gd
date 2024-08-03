@@ -1,3 +1,7 @@
 extends Node
 
-var player_current_attack = false
+var patrol_state = preload("res://Scripts/Enemy/States/patrol_state.gd")
+var chase_state = preload("res://Scripts/Enemy/States/chase_state.gd")
+
+func _ready():
+	pass

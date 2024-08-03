@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Scripts/global.gd"
-CharacterMovement="*res://Scripts/movement.gd"
+CharacterMovement="*res://Scripts/Functions/movement.gd"
 
 [display]
 
