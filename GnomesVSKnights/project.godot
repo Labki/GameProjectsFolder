@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Scripts/global.gd"
 CharacterMovement="*res://Scripts/Functions/movement.gd"
+PlayAnimation="*res://Scripts/Functions/playAnimation.gd"
 
 [display]
 

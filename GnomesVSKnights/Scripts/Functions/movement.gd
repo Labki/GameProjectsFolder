@@ -16,16 +16,9 @@ func setMovement(node: CharacterBody2D, direction: Vector2, animator: AnimatedSp
 				current_dir = "back"
 			elif direction.y > 0:
 				current_dir = "front"
-		play_anim("walk", animator)
+		PlayAnimation.play(animator, current_dir, "walk", flipHor)
 	else:
-		play_anim("idle", animator)
+		PlayAnimation.play(animator, current_dir, "idle", flipHor)
 	var target_velocity = direction.normalized() * speed
-	node.velocity = node.velocity.lerp(target_velocity, 0.07)
+	node.velocity = node.velocity.lerp(target_velocity, 0.2)
 	node.move_and_slide()
-
-func play_anim(movement, animator):
-	var anim_name = current_dir + "_" + movement
-	if movement == "walk":
-		animator.flip_h = flipHor
-	if animator.animation != anim_name:
-		animator.play(anim_name)

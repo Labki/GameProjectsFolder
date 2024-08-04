@@ -304,7 +304,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"front_attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -430,18 +430,25 @@ shape = SubResource("CircleShape2D_uy7u4")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ptrey")
-animation = &"side_walk"
-frame_progress = 0.0852397
+animation = &"front_attack"
+frame_progress = 0.223383
 offset = Vector2(0, -16)
 
-[node name="player_hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_ht86w")
 
 [node name="attack_cooldown" type="Timer" parent="."]
 
-[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
-[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = -95
+limit_top = -30
+limit_right = 1310
+limit_bottom = 730
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

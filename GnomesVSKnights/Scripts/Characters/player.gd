@@ -15,7 +15,6 @@ func _ready():
 func _physics_process(delta):
 	var direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 	CharacterMovement.setMovement(self, direction, animator, speed)
-	attack()
 	
 	if health <= 0:
 		player_alive = false
@@ -27,30 +26,21 @@ func _input(event):
 	if event.is_action_pressed("Attack"):
 		print("left click")
 	if event.is_action_pressed("Run"):
-		print("run")
+		speed += speed
+	if event.is_action_released("Run"):
+		speed = speed/2
 	if event.is_action_pressed("Crouch"):
 		print("Crouch")
 	if event.is_action_pressed("Jump"):
 		print("Jump")
 
-func _on_player_hitbox_body_entered(body):
+func _on_hitbox_body_entered(body):
 	if body.has_method("enemy"):
 		enemy_inRange = true
 
-func player():
-	pass
-
-func _on_player_hitbox_body_exited(body):
+func _on_hitbox_body_exited(body):
 	if body.has_method("enemy"):
 		enemy_inRange = false
 
-func attack():
-	if enemy_inRange and attack_cooldown:
-		health = health - 20
-		attack_cooldown = false
-		$attack_cooldown.start()
-		print("Health ", health)
-
-
-func _on_attack_cooldown_timeout():
-	attack_cooldown = true
+func player():
+	pass
