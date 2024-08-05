@@ -1208,6 +1208,7 @@ shape = SubResource("RectangleShape2D_al812")
 
 [node name="Player" parent="." instance=ExtResource("1_bdh4u")]
 scale = Vector2(2, 2)
+speed = 100
 
 [node name="Enemy" parent="." instance=ExtResource("3_pd5hq")]
 position = Vector2(335, 150)
@@ -1218,7 +1219,6 @@ pauseUponReachingPoint = true
 [node name="Slime" parent="Enemy" instance=ExtResource("3_kwyd4")]
 scale = Vector2(1.5, 1.5)
 speed = 75
-health = 20.0
 
 [node name="PatrolPoints" type="Node2D" parent="Enemy"]
 
@@ -1253,4 +1253,3 @@ pauseUponReachingPoint = true
 [node name="Slime" parent="StandingEnemy" instance=ExtResource("3_kwyd4")]
 scale = Vector2(1.5, 1.5)
 speed = 75
-health = 20.0

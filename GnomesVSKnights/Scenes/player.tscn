@@ -225,7 +225,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xvrtw")
 }],
-"loop": true,
+"loop": false,
 "name": &"back_attack",
 "speed": 5.0
 }, {
@@ -285,7 +285,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wrib8")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -302,7 +302,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2sb2o")
 }],
-"loop": true,
+"loop": false,
 "name": &"front_attack",
 "speed": 8.0
 }, {
@@ -365,7 +365,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0yu4c")
 }],
-"loop": true,
+"loop": false,
 "name": &"side_attack",
 "speed": 5.0
 }, {
@@ -430,8 +430,7 @@ shape = SubResource("CircleShape2D_uy7u4")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ptrey")
-animation = &"front_attack"
-frame_progress = 0.223383
+animation = &"side_walk"
 offset = Vector2(0, -16)
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -449,6 +448,6 @@ limit_top = -30
 limit_right = 1310
 limit_bottom = 730
 
+[connection signal="animation_finished" from="PlayerSprite" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
-[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

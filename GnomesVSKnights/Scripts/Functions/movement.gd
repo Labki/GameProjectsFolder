@@ -1,24 +1,21 @@
 extends Node
 
 var current_dir: String = "side"
-var flipHor: bool = false
+var flip: bool = false
 	
 func setMovement(node: CharacterBody2D, direction: Vector2, animator: AnimatedSprite2D, speed: int):
 	if direction.x != 0 || direction.y != 0:
 		if direction.x != 0:
 			current_dir = "side"
 			if direction.x > 0:
-				flipHor = false
+				flip = false
 			elif direction.x < 0:
-				flipHor = true
+				flip = true
 		else:
-			if direction.y < 0:
-				current_dir = "back"
-			elif direction.y > 0:
-				current_dir = "front"
-		PlayAnimation.play(animator, current_dir, "walk", flipHor)
+			current_dir = "back" if direction.y < 0 else "front"
+		PlayAnimation.play(animator, "walk", current_dir, flip, true)
 	else:
-		PlayAnimation.play(animator, current_dir, "idle", flipHor)
+		PlayAnimation.play(animator, "idle", current_dir, flip, true)
 	var target_velocity = direction.normalized() * speed
 	node.velocity = node.velocity.lerp(target_velocity, 0.2)
 	node.move_and_slide()

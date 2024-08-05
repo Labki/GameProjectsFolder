@@ -1,46 +1,65 @@
 extends CharacterBody2D
 
 var enemy_inRange = false
-var attack_cooldown = true
 var health = 100
 var player_alive = true
+var attack_timer = 0.0
+var attack_cooldown_duration = 1.0
+var is_attacking = false 
+var enemy: CharacterBody2D
 
 @export var speed: int = 100
 @onready var animator = $PlayerSprite
-var newMovement: Node
+var base_speed = speed
 
 func _ready():
 	position = Vector2(125, 375)
 	
 func _physics_process(delta):
+	if not player_alive:
+		return
+
 	var direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
-	CharacterMovement.setMovement(self, direction, animator, speed)
-	
+	if not is_attacking:
+		CharacterMovement.setMovement(self, direction, animator, speed)
+
 	if health <= 0:
 		player_alive = false
 		health = 0
 		print("Player has been killed")
 		self.queue_free()
+		
+	if attack_timer > 0:
+		attack_timer -= delta
 
 func _input(event):
-	if event.is_action_pressed("Attack"):
-		print("left click")
+	if event.is_action_pressed("Attack") and attack_timer <= 0:
+		attack(enemy)
+		attack_timer = attack_cooldown_duration
+		is_attacking = true
 	if event.is_action_pressed("Run"):
-		speed += speed
+		speed = base_speed * 2
 	if event.is_action_released("Run"):
-		speed = speed/2
-	if event.is_action_pressed("Crouch"):
-		print("Crouch")
-	if event.is_action_pressed("Jump"):
-		print("Jump")
+		speed = base_speed
 
 func _on_hitbox_body_entered(body):
 	if body.has_method("enemy"):
+		enemy = body
 		enemy_inRange = true
 
 func _on_hitbox_body_exited(body):
 	if body.has_method("enemy"):
+		enemy = null
 		enemy_inRange = false
+		
+func attack(enemy):
+	PlayAnimation.play(animator, "attack")
+	if enemy_inRange:
+		enemy.health -= 10
+
+func _on_animation_finished():
+	if "attack" in animator.animation.split("_"):
+		is_attacking = false
 
 func player():
 	pass

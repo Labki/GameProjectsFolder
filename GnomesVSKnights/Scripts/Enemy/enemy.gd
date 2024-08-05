@@ -14,9 +14,14 @@ var patrol_state = null
 var chase_state = null
 var idle_state = null
 var character: CharacterBody2D
+var enemy_alive = true
 
 func _ready():
+	if not enemy_character:
+		print("Error: enemy_character not set")
+		return
 	character = get_node(enemy_character)
+	# Continue with initialization
 	var patrol_node = get_node(patrol_route)
 	
 	if speed == 0:
@@ -34,11 +39,17 @@ func _ready():
 	state_machine = patrol_state
 	state_machine.enter(self)
 
+	# Signal Node Connection
 	character.detection_area.connect("body_entered", Callable(self, "_on_detection_area_body_entered"))
 	character.detection_area.connect("body_exited", Callable(self, "_on_detection_area_body_exited"))
+	character.animator.connect("animation_finished", Callable(self, "_on_animation_finished"))
 	
 func _physics_process(delta):
+	if not enemy_alive:
+		return
 	state_machine.update(delta)
+	if character.health <= 0:
+		die()
 
 func move():
 	CharacterMovement.setMovement(character, direction, character.animator, speed)
@@ -54,13 +65,29 @@ func _on_detection_area_body_exited(body):
 		change_state(patrol_state)
 
 func change_state(new_state):
-	state_machine.exit()
+	if state_machine:
+		state_machine.exit()
 	state_machine = new_state
 	state_machine.enter(self)
 	
 func update_direction():
 	if patrol_points.size() > 0:
 		direction = (patrol_points[current_point] - character.position).normalized()
+
+func take_damage(amount):
+	character.health -= amount
+	if character.health <= 0:
+		character.health = 0
+		die()
+
+func die():
+	enemy_alive = false
+	print("Enemy has been killed")
+	PlayAnimation.play(character.animator, "death")
+	
+func _on_animation_finished():
+	if character.animator.animation == "death":
+		queue_free()
 		
 func enemy():
 	pass

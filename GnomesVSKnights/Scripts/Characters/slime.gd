@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var collision_shape = $CollisionShape2D
 
 @export var speed: int = 50
+@export var health: float = 100.0
 
 func _ready():
 	pass
