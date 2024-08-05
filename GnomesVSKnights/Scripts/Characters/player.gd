@@ -10,6 +10,7 @@ var preventAnimation = false
 
 @export var speed: int = 100
 @onready var animator = $PlayerSprite
+
 var base_speed = speed
 var attack_speed = speed / 10
 
