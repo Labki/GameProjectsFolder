@@ -19,6 +19,7 @@ config/icon="res://gnomesvsknights.png"
 
 Global="*res://Scripts/global.gd"
 CharacterMovement="*res://Scripts/Functions/movement.gd"
+InputChecker="*res://Scripts/Helpers/input_checker.gd"
 
 [display]
 

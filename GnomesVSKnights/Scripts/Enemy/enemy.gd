@@ -5,7 +5,7 @@ extends Node2D
 @export var speed: int
 @export var pauseUponReachingPoint: bool = false
 
-var character: CharacterBody2D
+var character: BaseCharacter
 var enemy_alive = true
 
 var player = null
@@ -23,13 +23,13 @@ func _ready():
 		print("Error: enemy_character not set")
 		return
 	character = get_node(enemy_character)
-	# Continue with initialization
-	var patrol_node = get_node(patrol_route)
 	
 	if speed == 0:
 		speed = character.speed
-
-	if patrol_node:
+		
+	# Continue with initialization
+	if patrol_route:	
+		var patrol_node = get_node(patrol_route)
 		for child in patrol_node.get_children():
 			if child is Node2D:
 				patrol_points.append(child.position)
@@ -49,6 +49,8 @@ func _physics_process(delta):
 	if not enemy_alive:
 		return
 	state_machine.update(delta)
+	if not character or character.is_alive == false:
+		enemy_alive = false
 
 func move():
 	CharacterMovement.setMovement(character, direction, character.animator, speed)

@@ -1,18 +1,19 @@
 extends BaseCharacter
 
-
 @onready var animator_node = $PlayerSprite
 
 var attack_timer = 0.0
 var attack_cooldown_duration = 1.0
 var enemy: CharacterBody2D
 var preventAnimation = false
-var attack_speed = speed / 10
+
 
 func _ready():
 	position = Vector2(125, 375)
 	set_animator(animator_node)
-	
+	base_speed = speed
+	attack_speed = speed / 10
+
 func _physics_process(delta):
 	if not is_alive:
 		return
@@ -24,15 +25,12 @@ func _physics_process(delta):
 		attack_timer -= delta
 
 func _input(event):
-	if event.is_action_pressed("Attack") and attack_timer <= 0:
+	if InputChecker.is_attacking() and attack_timer <= 0:
 		attack(enemy)
 		attack_timer = attack_cooldown_duration
 		is_attacking = true
 		speed = attack_speed
-	if event.is_action_pressed("Run"):
-		speed = base_speed * 2
-	if event.is_action_released("Run"):
-		speed = base_speed
+	InputChecker.update_speed(self)
 
 func _on_hitbox_body_entered(body):
 	if body.has_method("enemy"):

@@ -37,11 +37,10 @@ func _on_animation_looped():
 	pass
 	
 func _on_animation_finished():
-	var node = character.get_parent() if character.get_parent().has_method("enemy") else character
 	if animation == "attack":
 		character.preventAnimation = false 
-		if node.has_method("on_attack_animation_finished"):
-			node.on_attack_animation_finished()
+		if character.has_method("on_attack_animation_finished"):
+			character.on_attack_animation_finished()
 	if animation == "death":
-		if node.has_method("on_death_animation_finished"):
-			node.on_death_animation_finished()
+		if character.has_method("on_death_animation_finished"):
+			character.on_death_animation_finished()
