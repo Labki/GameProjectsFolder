@@ -16,6 +16,8 @@ var idle_state = null
 var character: CharacterBody2D
 var enemy_alive = true
 
+var PlayAnimation = Global.playAnimation.new()
+
 func _ready():
 	if not enemy_character:
 		print("Error: enemy_character not set")
@@ -42,7 +44,8 @@ func _ready():
 	# Signal Node Connection
 	character.detection_area.connect("body_entered", Callable(self, "_on_detection_area_body_entered"))
 	character.detection_area.connect("body_exited", Callable(self, "_on_detection_area_body_exited"))
-	character.animator.connect("animation_finished", Callable(self, "_on_animation_finished"))
+	character.animator.connect("animation_finished", Callable(PlayAnimation, "_on_animation_finished"))
+	character.animator.connect("animation_looped", Callable(PlayAnimation, "_on_animation_looped"))
 	
 func _physics_process(delta):
 	if not enemy_alive:
@@ -82,12 +85,13 @@ func take_damage(amount):
 
 func die():
 	enemy_alive = false
-	print("Enemy has been killed")
 	PlayAnimation.play(character.animator, "death")
 	
-func _on_animation_finished():
-	if character.animator.animation == "death":
-		queue_free()
+func on_attack_animation_finished():
+	pass
+
+func on_death_animation_finished():
+	queue_free()
 		
 func enemy():
 	pass

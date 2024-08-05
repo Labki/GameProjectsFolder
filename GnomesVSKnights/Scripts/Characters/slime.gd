@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 @export var speed: int = 50
 @export var health: float = 100.0
+@export var preventAnimation = false
 
 func _ready():
 	pass

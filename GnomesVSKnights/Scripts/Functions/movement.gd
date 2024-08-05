@@ -2,7 +2,9 @@ extends Node
 
 var current_dir: String = "side"
 var flip: bool = false
-	
+
+var PlayAnimation = Global.playAnimation.new()
+
 func setMovement(node: CharacterBody2D, direction: Vector2, animator: AnimatedSprite2D, speed: int):
 	if direction.x != 0 || direction.y != 0:
 		if direction.x != 0:
