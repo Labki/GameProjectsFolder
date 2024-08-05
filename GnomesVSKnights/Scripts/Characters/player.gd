@@ -24,8 +24,7 @@ func _physics_process(delta):
 		return
 
 	var direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
-	if not is_attacking:
-		CharacterMovement.setMovement(self, direction, animator, speed)
+	CharacterMovement.setMovement(self, direction, animator, speed)
 
 	if health <= 0:
 		player_alive = false
@@ -60,7 +59,10 @@ func attack(enemy):
 		enemy.health -= 10
 
 func on_attack_animation_finished():
-	speed = base_speed
+	if Input.is_action_pressed("Run"):
+		speed = base_speed * 2
+	else:
+		speed = base_speed
 	is_attacking = false
 	
 func on_death_animation_finished():
