@@ -1,6 +1,7 @@
 extends BaseCharacter
 
-@onready var animator_node = $PlayerSprite
+@onready var animator_node: AnimatedSprite2D = $PlayerSprite
+@onready var healthbar_node: ProgressBar = $HealthBar
 
 var attack_timer = 0.0
 var attack_cooldown_duration = 1.0
@@ -9,8 +10,10 @@ var preventAnimation = false
 
 
 func _ready():
-	position = Vector2(125, 375)
 	set_animator(animator_node)
+	set_healthbar(healthbar_node)
+	_onready()
+	position = Vector2(125, 375)
 	base_speed = speed
 	attack_speed = speed / 10
 

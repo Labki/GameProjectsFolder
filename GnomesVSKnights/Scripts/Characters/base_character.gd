@@ -20,27 +20,55 @@ var is_running = false
 
 # Child Nodes
 var animator: AnimatedSprite2D
+var healthbar: ProgressBar
+var health_timer: Timer
 
 var PlayAnimation = Global.playAnimation.new()
 
-# Set animator and connect signals
+func _onready():
+	update_health()
+
+# Set outiside nodes
 func set_animator(animator_node: AnimatedSprite2D) -> void:
 	animator = animator_node
 	if animator:
 		animator.connect("animation_finished", Callable(PlayAnimation, "_on_animation_finished"))
 		animator.connect("animation_looped", Callable(PlayAnimation, "_on_animation_looped"))
 
+func set_healthbar(healthbar_node: ProgressBar) -> void:
+	healthbar = healthbar_node
+	if healthbar:
+		for child in healthbar.get_children():
+			if child is Timer:
+				health_timer = child
+				break
+		if health_timer:
+			health_timer.connect("timeout", Callable(self, "_start_health_regen"))
+
 # Take Damage from attacker
 func take_damage(amount: int) -> void:
 	health -= amount
+	update_health()
 	if health <= 0:
 		die()
 
-# Heal
+# Health
 func heal(amount: int) -> void:
 	health += amount
+	update_health()
 	if health > max_health:
 		health = max_health
+
+func update_health():
+	healthbar.value = health * 100 / max_health
+	if health >= max_health:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+		
+func _start_health_regen():
+	if health < max_health and health > 0:
+		self.heal(max_health / 10)
 
 # Attack the target
 func attack(target: BaseCharacter) -> void:
