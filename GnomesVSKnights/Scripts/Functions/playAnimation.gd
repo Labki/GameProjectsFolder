@@ -13,6 +13,10 @@ func play(_animator, _animation, new_dir:= "", newFlip:= false, updateFlip:= fal
 	animator = _animator
 	character = _animator.get_parent()
 	
+	if not character is CharacterBody2D:
+		animator.play(animation)
+		return
+
 	if character.preventAnimation:
 		return
 		

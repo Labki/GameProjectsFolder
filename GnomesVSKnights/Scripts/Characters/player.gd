@@ -8,7 +8,6 @@ var attack_cooldown_duration = 1.0
 var enemy: CharacterBody2D
 var preventAnimation = false
 
-
 func _ready():
 	set_animator(animator_node)
 	set_healthbar(healthbar_node)
@@ -26,6 +25,9 @@ func _physics_process(delta):
 		
 	if attack_timer > 0:
 		attack_timer -= delta
+		
+	if InputChecker.is_interacting():
+		check_interaction()
 
 func _input(event):
 	if InputChecker.is_attacking() and attack_timer <= 0:
@@ -35,6 +37,7 @@ func _input(event):
 		speed = attack_speed
 	InputChecker.update_speed(self)
 
+# Check for enemy
 func _on_hitbox_body_entered(body):
 	if body.has_method("enemy"):
 		enemy = body
@@ -42,6 +45,15 @@ func _on_hitbox_body_entered(body):
 func _on_hitbox_body_exited(body):
 	if body.has_method("enemy"):
 		enemy = null
+		
+# Check for interaction with items
+func check_interaction():
+	var items = get_tree().get_nodes_in_group("Interactables")
+	for item in items:
+		if item.interactable:
+			item.interact()
+			if item.collectable:
+				item.queue_free() # Remove item from the scene after collecting
 
 func player():
 	pass

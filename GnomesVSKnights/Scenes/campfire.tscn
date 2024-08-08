@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://rnlxfb1naxyi"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/campfire.gd" id="1_o77bu"]
+[ext_resource type="Texture2D" uid="uid://3eojlt08par4" path="res://Assets/Graphics/Tilesets/Serene Village/Full Tileset/Serene Village 32x32.png" id="2_er0gn"]
+[ext_resource type="Texture2D" uid="uid://42d26wfi3olq" path="res://Assets/Graphics/Tilesets/Serene Village/Animated stuff/campfire_32x32.png" id="3_77nvk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bsws"]
+atlas = ExtResource("2_er0gn")
+region = Rect2(544, 1056, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ja3"]
+atlas = ExtResource("3_77nvk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfbc7"]
+atlas = ExtResource("3_77nvk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n5hc"]
+atlas = ExtResource("3_77nvk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jckhq"]
+atlas = ExtResource("3_77nvk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26b6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bsws")
+}],
+"loop": false,
+"name": &"off",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ja3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfbc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n5hc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jckhq")
+}],
+"loop": true,
+"name": &"on",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x60sg"]
+radius = 27.1662
+
+[node name="campfire" type="StaticBody2D" groups=["Interactables"]]
+y_sort_enabled = true
+script = ExtResource("1_o77bu")
+
+[node name="CampfireSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_26b6t")
+animation = &"on"
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_x60sg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(-7, 10, -10, 3, -5, 2, 0, 3, 5, 2, 10, 3, 6, 10, 0, 9)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
