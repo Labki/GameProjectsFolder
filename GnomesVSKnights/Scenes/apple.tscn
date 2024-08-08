@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8sg7ema64qam"]
+
+[ext_resource type="Texture2D" uid="uid://b6fq4bscbq8lt" path="res://Assets/AsepriteMade/Objects/Food/Fruits/apple.png" id="1_guhwk"]
+[ext_resource type="Script" path="res://Scripts/Objects/apple.gd" id="1_h0h1e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0pxq"]
+atlas = ExtResource("1_guhwk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rwyu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0pxq")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75bmn"]
+radius = 27.1662
+
+[node name="apple" type="Node2D" groups=["Interactables"]]
+script = ExtResource("1_h0h1e")
+
+[node name="AppleSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_6rwyu")
+frame_progress = 1.0
+
+[node name="InteractArea" type="Area2D" parent="."]
+position = Vector2(0, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_75bmn")
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

@@ -425,18 +425,18 @@ collision_layer = 3
 script = ExtResource("1_0anl7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_uy7u4")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ptrey")
 animation = &"back_attack"
-offset = Vector2(0, -16)
+offset = Vector2(0, -15)
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_ht86w")
 
 [node name="attack_cooldown" type="Timer" parent="."]

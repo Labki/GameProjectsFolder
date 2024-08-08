@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://3eojlt08par4" path="res://Assets/Graphics/Tilesets/Serene Village/Full Tileset/Serene Village 32x32.png" id="2_sgn3w"]
 [ext_resource type="PackedScene" uid="uid://c7otkw8edr0o3" path="res://Scenes/slime.tscn" id="3_kwyd4"]
 [ext_resource type="PackedScene" uid="uid://bo683vu6grj6t" path="res://Scenes/enemy.tscn" id="3_pd5hq"]
-[ext_resource type="PackedScene" uid="uid://c3y6kr5eexjv3" path="res://Scenes/interactable.tscn" id="5_bs3mr"]
 [ext_resource type="PackedScene" uid="uid://rnlxfb1naxyi" path="res://Scenes/campfire.tscn" id="6_m22x2"]
+[ext_resource type="PackedScene" uid="uid://c8sg7ema64qam" path="res://Scenes/apple.tscn" id="7_dva1h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_23m7l"]
 texture = ExtResource("2_sgn3w")
@@ -1243,13 +1243,16 @@ y_sort_enabled = true
 [node name="Campfires" type="Node2D" parent="Interactables"]
 y_sort_enabled = true
 
-[node name="Campfire" parent="Interactables/Campfires" instance=ExtResource("5_bs3mr")]
+[node name="Campfire" parent="Interactables/Campfires" instance=ExtResource("6_m22x2")]
 position = Vector2(65, 290)
-
-[node name="campfire" parent="Interactables/Campfires/Campfire" instance=ExtResource("6_m22x2")]
 flaming = true
 
-[node name="Campfire2" parent="Interactables/Campfires" instance=ExtResource("5_bs3mr")]
+[node name="Campfire2" parent="Interactables/Campfires" instance=ExtResource("6_m22x2")]
 position = Vector2(570, 275)
 
-[node name="campfire" parent="Interactables/Campfires/Campfire2" instance=ExtResource("6_m22x2")]
+[node name="Apples" type="Node2D" parent="Interactables"]
+
+[node name="apple" parent="Interactables/Apples" instance=ExtResource("7_dva1h")]
+position = Vector2(205, 295)
+scale = Vector2(0.75, 0.75)
+collectable = true

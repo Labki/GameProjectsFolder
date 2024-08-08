@@ -50,10 +50,9 @@ func _on_hitbox_body_exited(body):
 func check_interaction():
 	var items = get_tree().get_nodes_in_group("Interactables")
 	for item in items:
-		if item.interactable:
+		# Only interact with items if they are interactable and the player is in range
+		if item.interactable and item.player_in_range:
 			item.interact()
-			if item.collectable:
-				item.queue_free() # Remove item from the scene after collecting
 
 func player():
 	pass
