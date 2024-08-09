@@ -1,7 +1,8 @@
-[gd_scene load_steps=57 format=3 uid="uid://c7hjd5ytrwmdo"]
+[gd_scene load_steps=58 format=3 uid="uid://c7hjd5ytrwmdo"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/player.gd" id="1_0anl7"]
 [ext_resource type="Texture2D" uid="uid://bslnj3vtstgfm" path="res://Assets/Graphics/Characters/Mystic Woods/player.png" id="2_xpir8"]
+[ext_resource type="PackedScene" uid="uid://b8hr1eyc2qgg5" path="res://Scenes/inventory.tscn" id="3_wsbmi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uy7u4"]
 radius = 5.38516
@@ -460,6 +461,8 @@ show_percentage = false
 [node name="regen_timer" type="Timer" parent="HealthBar"]
 wait_time = 5.0
 autostart = true
+
+[node name="inventory" parent="." instance=ExtResource("3_wsbmi")]
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

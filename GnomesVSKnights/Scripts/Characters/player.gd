@@ -2,11 +2,13 @@ extends BaseCharacter
 
 @onready var animator_node: AnimatedSprite2D = $PlayerSprite
 @onready var healthbar_node: ProgressBar = $HealthBar
+@onready var inventory = $inventory
 
 var attack_timer = 0.0
 var attack_cooldown_duration = 1.0
 var enemy: CharacterBody2D
 var preventAnimation = false
+var nearby_item = null 
 
 func _ready():
 	set_animator(animator_node)
@@ -26,8 +28,8 @@ func _physics_process(delta):
 	if attack_timer > 0:
 		attack_timer -= delta
 		
-	if InputChecker.is_interacting():
-		check_interaction()
+	if InputChecker.is_interacting() and nearby_item:
+		nearby_item.interact()
 
 func _input(event):
 	if InputChecker.is_attacking() and attack_timer <= 0:
@@ -45,14 +47,22 @@ func _on_hitbox_body_entered(body):
 func _on_hitbox_body_exited(body):
 	if body.has_method("enemy"):
 		enemy = null
-		
-# Check for interaction with items
-func check_interaction():
-	var items = get_tree().get_nodes_in_group("Interactables")
-	for item in items:
-		# Only interact with items if they are interactable and the player is in range
-		if item.interactable and item.player_in_range:
-			item.interact()
+
+# Handle entering the interaction range of an item
+func _on_item_area_entered(item):
+	if item.has_method("connect"):
+		item.connect("collected", Callable(self, "collect_item"))
+		nearby_item = item
+
+# Handle exiting the interaction range of an item
+func _on_item_area_exited(item):
+	if item.has_method("disconnect"):
+		item.disconnect("collected", Callable(self, "collect_item"))
+		nearby_item = null
+
+func collect_item(item_name: String):
+	inventory.add_item(item_name)
+	print("Collected item:", item_name)
 
 func player():
 	pass

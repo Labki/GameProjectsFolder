@@ -35,6 +35,3 @@ position = Vector2(0, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 shape = SubResource("CircleShape2D_75bmn")
-
-[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
-[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]
