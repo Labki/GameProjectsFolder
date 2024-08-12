@@ -18,6 +18,10 @@ var is_attacking = false
 var is_alive = true
 var is_running = false
 
+# Direction of character
+var direction: String
+var flipHor: bool
+
 # Child Nodes
 var animator: AnimatedSprite2D
 var healthbar: ProgressBar
@@ -26,6 +30,8 @@ var health_timer: Timer
 var PlayAnimation = Global.playAnimation.new()
 
 func _onready():
+	direction = "side"
+	flipHor = false
 	update_health()
 
 # Set outiside nodes

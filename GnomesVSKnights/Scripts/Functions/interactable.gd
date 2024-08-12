@@ -10,7 +10,7 @@ signal interacted
 signal collected(item_name)
 
 func _init_interactable():
-	pass
+	pass # Override this in derived classes for extra stuff
 
 func _ready():
 	_init_interactable()

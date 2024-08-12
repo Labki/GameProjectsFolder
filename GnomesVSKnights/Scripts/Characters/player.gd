@@ -21,7 +21,6 @@ func _ready():
 func _physics_process(delta):
 	if not is_alive:
 		return
-
 	var direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 	CharacterMovement.setMovement(self, direction, animator, speed)
 		

@@ -1,18 +1,16 @@
 extends Node
 
-var current_dir: String = "side"
-var flipHor: bool = false
 var animation = ""
 var animator = null
 var character = null
 var connected_animators = {}
 
 func play(_animator, _animation, new_dir:= "", newFlip:= false, updateFlip:= false):	
-	# Set animator, animation and character for connceted functions
+	# Set animator, animation and character
 	animation = _animation
 	animator = _animator
 	character = _animator.get_parent()
-	
+
 	if not character is CharacterBody2D:
 		animator.play(animation)
 		return
@@ -22,10 +20,10 @@ func play(_animator, _animation, new_dir:= "", newFlip:= false, updateFlip:= fal
 		
 	# Set variables for playing new animation
 	if new_dir != "":
-		current_dir = new_dir
+		character.direction = new_dir
 	if updateFlip:
-		flipHor = newFlip
-	var anim_name = current_dir + "_" + animation
+		character.flipHor = newFlip
+	var anim_name = character.direction + "_" + animation
 	if animation == "death":
 		anim_name = animation
 	if animation == "death" or animation == "attack":
@@ -33,7 +31,7 @@ func play(_animator, _animation, new_dir:= "", newFlip:= false, updateFlip:= fal
 
 	# Play animation based on animation name
 	if animation == "walk":
-		animator.flip_h = flipHor
+		animator.flip_h = character.flipHor
 	if animator.animation != anim_name:
 		animator.play(anim_name)
 
