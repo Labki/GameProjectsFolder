@@ -7,20 +7,21 @@ class_name BaseCharacter
 @export var health: int = 100
 @export var max_health: int = 100
 @export var attack_power: int = 10
+@export var attack_cooldown: float = 1.0
 @export var speed: int = 50
 
-# Different types of speed
+# Internal variables
 var base_speed: int
 var attack_speed: int
+var direction: String
+var attack_timer: float = 0.0
+var preventAnimation: bool = false
+var target: BaseCharacter = null
 
 # Character state
-var is_attacking = false
-var is_alive = true
-var is_running = false
-
-# Direction of character
-var direction: String
-var flipHor: bool
+var is_attacking: bool = false
+var is_alive: bool = true
+var is_running: bool = false
 
 # Child Nodes
 var animator: AnimatedSprite2D
@@ -30,9 +31,14 @@ var health_timer: Timer
 var PlayAnimation = Global.playAnimation.new()
 
 func _onready():
-	direction = "side"
-	flipHor = false
+	direction = "right"
 	update_health()
+
+func _update():
+	if is_attacking == true:
+		preventAnimation = true
+	else:
+		preventAnimation = false
 
 # Set outiside nodes
 func set_animator(animator_node: AnimatedSprite2D) -> void:
@@ -77,10 +83,9 @@ func _start_health_regen():
 		self.heal(max_health / 10)
 
 # Attack the target
-func attack(target: BaseCharacter) -> void:
+func attack(_target: BaseCharacter) -> void:
+	target = _target
 	PlayAnimation.play(animator, "attack")
-	if target:
-		target.take_damage(attack_power)
 
 # The end of an era
 func die():
@@ -91,9 +96,11 @@ func die():
 func on_attack_animation_finished():
 	if self.has_method("player"):
 		InputChecker.update_speed(self)
-		is_attacking = false
 	else:
 		pass
+	is_attacking = false
+	if target:
+		target.take_damage(attack_power)
 
 # Death animation done
 func on_death_animation_finished():

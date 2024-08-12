@@ -12,9 +12,11 @@ func update(_delta):
 	var player_position = state_owner.player.position
 	var enemy_position = state_owner.position + character.position
 
-	# Calculate direction towards player
-	state_owner.direction = (player_position - enemy_position).normalized()
-	state_owner.move()
+	if state_owner.target == null:
+		state_owner.direction = (player_position - enemy_position).normalized()
+		state_owner.move()
+	else:
+		state_owner.change_state(state_owner.attack_state)
 
 func exit():
 	pass

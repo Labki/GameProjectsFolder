@@ -1,13 +1,11 @@
 extends BaseCharacter
 
-@onready var animator_node: AnimatedSprite2D = $PlayerSprite
-@onready var healthbar_node: ProgressBar = $HealthBar
+@onready var animator_node: AnimatedSprite2D = $sprite
+@onready var healthbar_node: ProgressBar = $health_bar
+@onready var attack_area_node: Area2D = $attack_area
 @onready var inventory = $inventory
 
-var attack_timer = 0.0
-var attack_cooldown_duration = 1.0
 var enemy: CharacterBody2D
-var preventAnimation = false
 var nearby_item = null 
 
 func _ready():
@@ -21,29 +19,40 @@ func _ready():
 func _physics_process(delta):
 	if not is_alive:
 		return
+	_update()
 	var direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 	CharacterMovement.setMovement(self, direction, animator, speed)
-		
-	if attack_timer > 0:
-		attack_timer -= delta
+	attack_area()
+	
+	if self.attack_timer > 0:
+		self.attack_timer -= delta
 		
 	if InputChecker.is_interacting() and nearby_item:
 		nearby_item.interact()
 
 func _input(event):
-	if InputChecker.is_attacking() and attack_timer <= 0:
+	if InputChecker.is_attacking() and self.attack_timer <= 0:
 		attack(enemy)
-		attack_timer = attack_cooldown_duration
-		is_attacking = true
+		self.attack_timer = self.attack_cooldown
 		speed = attack_speed
 	InputChecker.update_speed(self)
+	
+func attack_area(): 
+	# Enable the specific node based on direction
+	var specific_node = attack_area_node.get_node(self.direction)
+	if specific_node.disabled == true:
+		specific_node.disabled = false
+
+	for child in attack_area_node.get_children():
+		if not child == specific_node:
+			child.disabled = true
 
 # Check for enemy
-func _on_hitbox_body_entered(body):
+func _on_attack_area_body_entered(body):
 	if body.has_method("enemy"):
 		enemy = body
 
-func _on_hitbox_body_exited(body):
+func _on_attack_area_body_exited(body):
 	if body.has_method("enemy"):
 		enemy = null
 
@@ -61,7 +70,6 @@ func _on_item_area_exited(item):
 
 func collect_item(item_name: String):
 	inventory.add_item(item_name)
-	print("Collected item:", item_name)
 
 func player():
 	pass

@@ -1,11 +1,10 @@
 extends BaseCharacter
 
-@onready var animator_node: AnimatedSprite2D = $SlimeSprite
-@onready var healthbar_node: ProgressBar = $SlimeHealthBar
-@onready var detection_area = $DetectionArea
-@onready var hitbox = $Hitbox
-@onready var collision_shape = $CollisionShape2D
-@export var preventAnimation = false
+@onready var animator_node: AnimatedSprite2D = $sprite
+@onready var healthbar_node: ProgressBar = $health_bar
+@onready var detection_area: Area2D = $detection_area
+@onready var attack_area: Area2D = $attack_area
+@onready var collision_shape = $collision
 
 func _ready():
 	set_animator(animator_node)
@@ -14,6 +13,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	_update()
 	pass
 
 func enemy():

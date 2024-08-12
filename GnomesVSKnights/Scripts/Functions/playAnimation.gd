@@ -5,7 +5,7 @@ var animator = null
 var character = null
 var connected_animators = {}
 
-func play(_animator, _animation, new_dir:= "", newFlip:= false, updateFlip:= false):	
+func play(_animator, _animation, new_dir:= ""):	
 	# Set animator, animation and character
 	animation = _animation
 	animator = _animator
@@ -14,25 +14,22 @@ func play(_animator, _animation, new_dir:= "", newFlip:= false, updateFlip:= fal
 	if not character is CharacterBody2D:
 		animator.play(animation)
 		return
-
-	if character.preventAnimation:
+	if character.preventAnimation and character.is_alive:
 		return
-		
+
 	# Set variables for playing new animation
 	if new_dir != "":
 		character.direction = new_dir
-	if updateFlip:
-		character.flipHor = newFlip
-	var anim_name = character.direction + "_" + animation
+		animator.flip_h = true if new_dir == "left" else false
+
+	var anim_dir = "side" if ((character.direction == "left") or (character.direction == "right")) else character.direction
+	var anim_name = anim_dir + "_" + animation
 	if animation == "death":
 		anim_name = animation
-	if animation == "death" or animation == "attack":
-		character.preventAnimation = true
-
-	# Play animation based on animation name
-	if animation == "walk":
-		animator.flip_h = character.flipHor
-	if animator.animation != anim_name:
+	if animation == "attack":
+		character.is_attacking = true
+		animator.play(anim_name)
+	elif animator.animation != anim_name:
 		animator.play(anim_name)
 
 func _on_animation_looped():
@@ -40,7 +37,6 @@ func _on_animation_looped():
 	
 func _on_animation_finished():
 	if animation == "attack":
-		character.preventAnimation = false 
 		if character.has_method("on_attack_animation_finished"):
 			character.on_attack_animation_finished()
 	if animation == "death":
