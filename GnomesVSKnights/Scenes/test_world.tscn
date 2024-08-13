@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://r1m74e06yiqr"]
 
-[ext_resource type="PackedScene" uid="uid://ch5gmm2rrmodd" path="res://Scenes/player.tscn" id="1_bdh4u"]
+[ext_resource type="PackedScene" uid="uid://c7hjd5ytrwmdo" path="res://Scenes/player.tscn" id="1_bdh4u"]
 [ext_resource type="Texture2D" uid="uid://3eojlt08par4" path="res://Assets/Graphics/Tilesets/Serene Village/Full Tileset/Serene Village 32x32.png" id="2_sgn3w"]
-[ext_resource type="PackedScene" uid="uid://dq70wl86i16px" path="res://Scenes/slime.tscn" id="3_kwyd4"]
-[ext_resource type="PackedScene" path="res://Scenes/enemy.tscn" id="3_pd5hq"]
-[ext_resource type="PackedScene" path="res://Scenes/campfire.tscn" id="6_m22x2"]
-[ext_resource type="PackedScene" path="res://Scenes/apple.tscn" id="7_dva1h"]
+[ext_resource type="PackedScene" uid="uid://c7otkw8edr0o3" path="res://Scenes/slime.tscn" id="3_kwyd4"]
+[ext_resource type="PackedScene" uid="uid://bo683vu6grj6t" path="res://Scenes/enemy.tscn" id="3_pd5hq"]
+[ext_resource type="PackedScene" uid="uid://rnlxfb1naxyi" path="res://Scenes/campfire.tscn" id="6_m22x2"]
+[ext_resource type="PackedScene" uid="uid://c8sg7ema64qam" path="res://Scenes/apple.tscn" id="7_dva1h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_23m7l"]
 texture = ExtResource("2_sgn3w")
@@ -1196,7 +1196,7 @@ pauseUponReachingPoint = true
 
 [node name="Slime" parent="Enemies/Enemy" instance=ExtResource("3_kwyd4")]
 scale = Vector2(1.5, 1.5)
-attack_cooldown = 5.0
+attack_cooldown = 2.5
 
 [node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy"]
 

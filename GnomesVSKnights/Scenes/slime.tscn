@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://dq70wl86i16px"]
+[gd_scene load_steps=93 format=3 uid="uid://c7otkw8edr0o3"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/slime.gd" id="1_8oie3"]
 [ext_resource type="Texture2D" uid="uid://bfwtt6or0r5w8" path="res://Assets/Graphics/Characters/Mystic Woods/slime.png" id="2_nnmct"]
