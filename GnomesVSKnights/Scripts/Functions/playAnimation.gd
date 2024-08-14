@@ -5,7 +5,7 @@ var animator = null
 var character = null
 var connected_animators = {}
 
-func play(_animator, _animation, new_dir:= ""):	
+func play(_animator, _animation, new_dir:= ""):
 	# Set animator, animation and character
 	animation = _animation
 	animator = _animator
@@ -19,10 +19,10 @@ func play(_animator, _animation, new_dir:= ""):
 
 	# Set variables for playing new animation
 	if new_dir != "":
-		character.direction = new_dir
+		character.current_dir = new_dir
 		animator.flip_h = true if new_dir == "left" else false
 
-	var anim_dir = "side" if ((character.direction == "left") or (character.direction == "right")) else character.direction
+	var anim_dir = "side" if ((character.current_dir == "left") or (character.current_dir == "right")) else character.current_dir
 	var anim_name = anim_dir + "_" + animation
 	if animation == "death":
 		anim_name = animation

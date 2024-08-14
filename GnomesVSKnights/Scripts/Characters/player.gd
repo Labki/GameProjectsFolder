@@ -11,7 +11,7 @@ var nearby_item = null
 func _ready():
 	set_animator(animator_node)
 	set_healthbar(healthbar_node)
-	_onready()
+	_enter()
 	position = Vector2(125, 375)
 	base_speed = speed
 	attack_speed = speed / 10
@@ -20,26 +20,26 @@ func _physics_process(delta):
 	if not is_alive:
 		return
 	_update()
-	var direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
+	direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 	CharacterMovement.setMovement(self, direction, animator, speed)
 	attack_area()
 	
-	if self.attack_timer > 0:
-		self.attack_timer -= delta
+	if attack_timer > 0:
+		attack_timer -= delta
 		
 	if InputChecker.is_interacting() and nearby_item:
 		nearby_item.interact()
 
 func _input(event):
-	if InputChecker.is_attacking() and self.attack_timer <= 0:
+	if InputChecker.is_attacking() and attack_timer <= 0:
 		attack(enemy)
-		self.attack_timer = self.attack_cooldown
+		attack_timer = attack_cooldown
 		speed = attack_speed
 	InputChecker.update_speed(self)
 	
 func attack_area(): 
 	# Enable the specific node based on direction
-	var specific_node = attack_area_node.get_node(self.direction)
+	var specific_node = attack_area_node.get_node(current_dir)
 	if specific_node.disabled == true:
 		specific_node.disabled = false
 

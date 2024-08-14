@@ -1,18 +1,13 @@
-extends Node2D
+extends BaseCharacter
 
-@export var enemy_character: NodePath
+class_name Enemy
+
 @export var patrol_route: NodePath
-@export var speed: int
 @export var pauseUponReachingPoint: bool = false
 
-var character: BaseCharacter
-var enemy_alive = true
-
 var player = null
-var target = null
 var patrol_points = []
 var current_point = null
-var direction = Vector2()
 
 var state_machine = null
 var patrol_state = null
@@ -20,15 +15,8 @@ var chase_state = null
 var idle_state = null
 var attack_state = null
 
-func _ready():
-	if not enemy_character:
-		print("Error: enemy_character not set")
-		return
-	character = get_node(enemy_character)
-	
-	if speed == 0:
-		speed = character.speed
-		
+func enter():
+	_enter()
 	# Continue with initialization
 	if patrol_route:	
 		var patrol_node = get_node(patrol_route)
@@ -45,20 +33,18 @@ func _ready():
 	state_machine.enter(self)
 
 	# Signal Node Connection
-	character.detection_area.connect("body_entered", Callable(self, "_on_detection_area_body_entered"))
-	character.detection_area.connect("body_exited", Callable(self, "_on_detection_area_body_exited"))
-	character.attack_area.connect("body_entered", Callable(self, "_on_attack_area_body_entered"))
-	character.attack_area.connect("body_exited", Callable(self, "_on_attack_area_body_exited"))
+	self.detection_area.connect("body_entered", Callable(self, "_on_detection_area_body_entered"))
+	self.detection_area.connect("body_exited", Callable(self, "_on_detection_area_body_exited"))
+	self.attack_area.connect("body_entered", Callable(self, "_on_attack_area_body_entered"))
+	self.attack_area.connect("body_exited", Callable(self, "_on_attack_area_body_exited"))
 	
-func _physics_process(delta):
-	if not enemy_alive:
+func update(delta):
+	if not is_alive:
 		return
 	state_machine.update(delta)
-	if not character or character.is_alive == false:
-		enemy_alive = false
 
 func move():
-	CharacterMovement.setMovement(character, direction, character.animator, speed)
+	CharacterMovement.setMovement(self, direction, animator, speed)
 
 func _on_detection_area_body_entered(body):
 	if body.has_method("player"):  # Ensure the body is the player
@@ -88,7 +74,7 @@ func change_state(new_state):
 	
 func update_direction():
 	if patrol_points.size() > 0:
-		direction = (patrol_points[current_point] - character.position).normalized()
+		direction = (patrol_points[current_point] - position).normalized()
 		
 func enemy():
 	pass

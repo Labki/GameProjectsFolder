@@ -13,10 +13,11 @@ class_name BaseCharacter
 # Internal variables
 var base_speed: int
 var attack_speed: int
-var direction: String
+var current_dir: String
 var attack_timer: float = 0.0
 var preventAnimation: bool = false
 var target: BaseCharacter = null
+var direction = Vector2()
 
 # Character state
 var is_attacking: bool = false
@@ -30,8 +31,8 @@ var health_timer: Timer
 
 var PlayAnimation = Global.playAnimation.new()
 
-func _onready():
-	direction = "right"
+func _enter():
+	current_dir = "right"
 	update_health()
 
 func _update():
@@ -80,7 +81,7 @@ func update_health():
 		
 func _start_health_regen():
 	if health < max_health and health > 0:
-		self.heal(max_health / 10)
+		heal(max_health / 10)
 
 # Attack the target
 func attack(_target: BaseCharacter) -> void:
@@ -94,7 +95,7 @@ func die():
 
 # Attack animation done
 func on_attack_animation_finished():
-	if self.has_method("player"):
+	if has_method("player"):
 		InputChecker.update_speed(self)
 	else:
 		pass

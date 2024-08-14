@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://r1m74e06yiqr"]
+[gd_scene load_steps=8 format=3 uid="uid://r1m74e06yiqr"]
 
-[ext_resource type="PackedScene" uid="uid://c7hjd5ytrwmdo" path="res://Scenes/player.tscn" id="1_bdh4u"]
+[ext_resource type="PackedScene" uid="uid://c7hjd5ytrwmdo" path="res://Scenes/Characters/Player/player.tscn" id="2_apj8v"]
 [ext_resource type="Texture2D" uid="uid://3eojlt08par4" path="res://Assets/Graphics/Tilesets/Serene Village/Full Tileset/Serene Village 32x32.png" id="2_sgn3w"]
-[ext_resource type="PackedScene" uid="uid://c7otkw8edr0o3" path="res://Scenes/slime.tscn" id="3_kwyd4"]
-[ext_resource type="PackedScene" uid="uid://bo683vu6grj6t" path="res://Scenes/enemy.tscn" id="3_pd5hq"]
-[ext_resource type="PackedScene" uid="uid://rnlxfb1naxyi" path="res://Scenes/campfire.tscn" id="6_m22x2"]
-[ext_resource type="PackedScene" uid="uid://c8sg7ema64qam" path="res://Scenes/apple.tscn" id="7_dva1h"]
+[ext_resource type="PackedScene" uid="uid://c7otkw8edr0o3" path="res://Scenes/Characters/Enemy/slime.tscn" id="3_7fhuu"]
+[ext_resource type="PackedScene" uid="uid://rnlxfb1naxyi" path="res://Scenes/Objects/campfire.tscn" id="3_gej56"]
+[ext_resource type="PackedScene" uid="uid://c8sg7ema64qam" path="res://Scenes/Objects/apple.tscn" id="4_gqjrr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_23m7l"]
 texture = ExtResource("2_sgn3w")
@@ -1179,61 +1178,49 @@ layer_3/name = "Ysort"
 layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array(458771, 1179648, 24, 983041, 1179648, 24, 1179664, 1048576, 30, 262164, 1048576, 28, 524318, 393216, 28, 589853, 262144, 32, 524317, 262144, 36, 524325, 262144, 30, 65566, 262144, 32, 1048607, 262144, 32, 851991, 262144, 36, 589840, 262144, 36, 589841, 393216, 28, 524301, 655360, 26, 589833, 524288, 30, 524302, 524288, 30, 589838, 786432, 32, 655374, 786432, 32, 720910, 786432, 26, 786441, 655360, 26, 786442, 655360, 34, 786443, 655360, 34, 786444, 655360, 34, 786445, 786432, 26, 720909, 786432, 30, 589834, 655360, 30, 589835, 786432, 26, 524299, 786432, 32, 458766, 917504, 32, 655370, 786432, 38, 720906, 524288, 40, 720908, 524288, 36, 655373, 786432, 36, 589837, 917504, 36, 458762, 1048576, 26, 458760, 1179648, 24, 655366, 1179648, 24, 786439, 2228224, 26, 196614, 2228224, 26, 458779, 1179648, 24, 720921, 1179648, 24, 852001, 1179648, 24, 917524, 1179648, 24, 1179655, 393216, 28, 1376257, 262144, 30, 1376255, 0, 26, 720905, 524288, 32, 655369, 524288, 32, 196621, 1835008, 36, 196622, 1966080, 36, 196623, 2097152, 36, 196624, 1966080, 36, 196625, 2097152, 36, 196626, 2228224, 36, 196627, 2359296, 36, 26, 1835008, 36, 27, 2228224, 36, 28, 2359296, 36, 327681, 1835008, 36, 327682, 1966080, 36, 327683, 2359296, 36, 917509, 1179648, 24, 983055, 1835008, 36, 983056, 2228224, 36, 983057, 2359296, 36, 1114124, 1179648, 24, 1179671, 1179648, 24, 1179678, 262144, 30, 524304, 786432, 24, 262151, 786432, 24, 589831, 786432, 24, 1114117, 786432, 24, 1114127, 786432, 24, 1179677, 786432, 24, 655398, 786432, 24, 196640, 786432, 24, 589851, 786432, 24, 262156, 524288, 24, 524298, 524288, 24, 720904, 524288, 24, 720912, 524288, 24, 589842, 262144, 24, 851977, 655360, 24, 327684, 655360, 24, 655362, 655360, 24, 720898, 524288, 24, 458754, 262144, 24, 1310718, 524288, 24, 1114110, 262144, 24, 1376267, 393216, 24, 1048587, 262144, 24, 1376277, 262144, 24, 1310742, 655360, 24, 1114139, 524288, 24, 983072, 524288, 24, 720933, 262144, 24, 524322, 262144, 24, 393252, 524288, 24, 196641, 655360, 24, 655388, 262144, 24, 1048595, 262144, 24, 917522, 393216, 24, 1310753, 524288, 24, 1376295, 655360, 24, 1441829, 786432, 24, 1310750, 262144, 24, 1441830, 262144, 30, 0, 393216, 28, 1, 262144, 24, 1179628, 262144, 24)
 
-[node name="Player" parent="." instance=ExtResource("1_bdh4u")]
+[node name="Player" parent="." instance=ExtResource("2_apj8v")]
 scale = Vector2(2, 2)
-health = 50
-max_health = 50
-attack_power = 13
+health = 20
+max_health = 20
+attack_power = null
+attack_cooldown = null
 speed = 100
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("3_pd5hq")]
-position = Vector2(335, 150)
-enemy_character = NodePath("Slime")
+[node name="Slime" parent="Enemies" instance=ExtResource("3_7fhuu")]
+position = Vector2(333, 150)
+scale = Vector2(1.5, 1.5)
 patrol_route = NodePath("PatrolPoints")
 pauseUponReachingPoint = true
 
-[node name="Slime" parent="Enemies/Enemy" instance=ExtResource("3_kwyd4")]
-scale = Vector2(1.5, 1.5)
-attack_cooldown = 2.5
+[node name="PatrolPoints" type="Node2D" parent="Enemies/Slime"]
 
-[node name="PatrolPoints" type="Node2D" parent="Enemies/Enemy"]
+[node name="Position2D0" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
 
-[node name="Position2D0" type="Node2D" parent="Enemies/Enemy/PatrolPoints"]
-
-[node name="Position2D1" type="Node2D" parent="Enemies/Enemy/PatrolPoints"]
+[node name="Position2D1" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
 position = Vector2(25, -70)
 
-[node name="Position2D2" type="Node2D" parent="Enemies/Enemy/PatrolPoints"]
+[node name="Position2D2" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
 position = Vector2(175, -70)
 
-[node name="Position2D3" type="Node2D" parent="Enemies/Enemy/PatrolPoints"]
+[node name="Position2D3" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
 position = Vector2(0, -55)
 
-[node name="Position2D4" type="Node2D" parent="Enemies/Enemy/PatrolPoints"]
+[node name="Position2D4" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
 position = Vector2(0, 55)
 
-[node name="Position2D5" type="Node2D" parent="Enemies/Enemy/PatrolPoints"]
+[node name="Position2D5" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
 position = Vector2(-80, 60)
 
-[node name="Position2D6" type="Node2D" parent="Enemies/Enemy/PatrolPoints"]
+[node name="Position2D6" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
 position = Vector2(80, 60)
 
-[node name="Position2D7" type="Node2D" parent="Enemies/Enemy/PatrolPoints"]
+[node name="Position2D7" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
 position = Vector2(0, 60)
 
-[node name="StandingEnemy" parent="Enemies" instance=ExtResource("3_pd5hq")]
-position = Vector2(750, 210)
-enemy_character = NodePath("Slime")
-speed = 50
-pauseUponReachingPoint = true
-
-[node name="Slime" parent="Enemies/StandingEnemy" instance=ExtResource("3_kwyd4")]
-scale = Vector2(1.5, 1.5)
-health = 15
-max_health = 15
-attack_power = 5
+[node name="BridgeSlime" parent="Enemies" instance=ExtResource("3_7fhuu")]
+position = Vector2(750, 200)
 
 [node name="Interactables" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -1241,16 +1228,15 @@ y_sort_enabled = true
 [node name="Campfires" type="Node2D" parent="Interactables"]
 y_sort_enabled = true
 
-[node name="Campfire" parent="Interactables/Campfires" instance=ExtResource("6_m22x2")]
+[node name="campfire" parent="Interactables/Campfires" instance=ExtResource("3_gej56")]
 position = Vector2(65, 290)
 
-[node name="Campfire2" parent="Interactables/Campfires" instance=ExtResource("6_m22x2")]
+[node name="campfire2" parent="Interactables/Campfires" instance=ExtResource("3_gej56")]
 position = Vector2(570, 275)
 flaming = true
 
 [node name="Apples" type="Node2D" parent="Interactables"]
 
-[node name="apple" parent="Interactables/Apples" instance=ExtResource("7_dva1h")]
+[node name="apple" parent="Interactables/Apples" instance=ExtResource("4_gqjrr")]
 position = Vector2(205, 295)
-scale = Vector2(0.75, 0.75)
 collectable = true

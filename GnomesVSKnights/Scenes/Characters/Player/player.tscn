@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Characters/player.gd" id="1_0anl7"]
 [ext_resource type="Texture2D" uid="uid://bslnj3vtstgfm" path="res://Assets/Graphics/Characters/Mystic Woods/player.png" id="2_xpir8"]
-[ext_resource type="PackedScene" uid="uid://b8hr1eyc2qgg5" path="res://Scenes/inventory.tscn" id="3_wsbmi"]
+[ext_resource type="PackedScene" uid="uid://b8hr1eyc2qgg5" path="res://Scenes/Extra/inventory.tscn" id="3_wsbmi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w033m"]
 atlas = ExtResource("2_xpir8")
