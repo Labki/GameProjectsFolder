@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://c7hjd5ytrwmdo"]
+[gd_scene load_steps=57 format=3 uid="uid://c7hjd5ytrwmdo"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/player.gd" id="1_0anl7"]
 [ext_resource type="Texture2D" uid="uid://bslnj3vtstgfm" path="res://Assets/Graphics/Characters/Mystic Woods/player.png" id="2_xpir8"]
@@ -417,15 +417,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_uy7u4"]
 radius = 5.38516
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_63ne3"]
-size = Vector2(14, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctdqt"]
-size = Vector2(1, 12)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbsbm"]
-size = Vector2(1, 12)
-
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 3
@@ -449,26 +440,26 @@ limit_bottom = 730
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_uy7u4")
 
-[node name="attack_area" type="Area2D" parent="."]
+[node name="target_area" type="Area2D" parent="."]
 
-[node name="right" type="CollisionShape2D" parent="attack_area"]
+[node name="right" type="CollisionPolygon2D" parent="target_area"]
 position = Vector2(7, 0)
-shape = SubResource("RectangleShape2D_63ne3")
+polygon = PackedVector2Array(6, 13, 6, -13, -7, 0)
 disabled = true
 
-[node name="back" type="CollisionShape2D" parent="attack_area"]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_ctdqt")
+[node name="left" type="CollisionPolygon2D" parent="target_area"]
+position = Vector2(-11, 0)
+polygon = PackedVector2Array(-2, 13, -2, -13, 11, 0)
 disabled = true
 
-[node name="left" type="CollisionShape2D" parent="attack_area"]
-position = Vector2(-7, 0)
-shape = SubResource("RectangleShape2D_63ne3")
+[node name="back" type="CollisionPolygon2D" parent="target_area"]
+position = Vector2(-5, -8)
+polygon = PackedVector2Array(5, 8, -8, -5, 18, -5)
 disabled = true
 
-[node name="front" type="CollisionShape2D" parent="attack_area"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_dbsbm")
+[node name="front" type="CollisionPolygon2D" parent="target_area"]
+position = Vector2(-11, 0)
+polygon = PackedVector2Array(-2, 13, 24, 13, 11, 0)
 disabled = true
 
 [node name="health_bar" type="ProgressBar" parent="."]
@@ -485,6 +476,8 @@ wait_time = 5.0
 autostart = true
 
 [node name="inventory" parent="." instance=ExtResource("3_wsbmi")]
+offset_top = 4.0
+offset_bottom = 44.0
 
-[connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
-[connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]
+[connection signal="body_entered" from="target_area" to="." method="_on_target_area_body_entered"]
+[connection signal="body_exited" from="target_area" to="." method="_on_target_area_body_exited"]

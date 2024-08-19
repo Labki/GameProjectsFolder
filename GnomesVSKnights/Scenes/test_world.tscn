@@ -1182,45 +1182,58 @@ layer_3/tile_data = PackedInt32Array(458771, 1179648, 24, 983041, 1179648, 24, 1
 scale = Vector2(2, 2)
 health = 20
 max_health = 20
-attack_power = null
-attack_cooldown = null
+attack_power = 5
+attack_cooldown = 1.0
+attack_range = 40
+hit_frame = 1
 speed = 100
+crit_rate = 0.01
+crit_dmg = 2.0
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Slime" parent="Enemies" instance=ExtResource("3_7fhuu")]
+[node name="BuffedSlime" type="Node2D" parent="Enemies"]
 position = Vector2(333, 150)
+
+[node name="Slime" parent="Enemies/BuffedSlime" instance=ExtResource("3_7fhuu")]
 scale = Vector2(1.5, 1.5)
-patrol_route = NodePath("PatrolPoints")
+patrol_route = NodePath("../PatrolPoints")
 pauseUponReachingPoint = true
+health = 10
+max_health = 10
+attack_range = 25
+hit_frame = 6
+crit_dmg = 1.5
 
-[node name="PatrolPoints" type="Node2D" parent="Enemies/Slime"]
+[node name="PatrolPoints" type="Node2D" parent="Enemies/BuffedSlime"]
 
-[node name="Position2D0" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
+[node name="Position2D0" type="Node2D" parent="Enemies/BuffedSlime/PatrolPoints"]
 
-[node name="Position2D1" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
+[node name="Position2D1" type="Node2D" parent="Enemies/BuffedSlime/PatrolPoints"]
 position = Vector2(25, -70)
 
-[node name="Position2D2" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
+[node name="Position2D2" type="Node2D" parent="Enemies/BuffedSlime/PatrolPoints"]
 position = Vector2(175, -70)
 
-[node name="Position2D3" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
+[node name="Position2D3" type="Node2D" parent="Enemies/BuffedSlime/PatrolPoints"]
 position = Vector2(0, -55)
 
-[node name="Position2D4" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
+[node name="Position2D4" type="Node2D" parent="Enemies/BuffedSlime/PatrolPoints"]
 position = Vector2(0, 55)
 
-[node name="Position2D5" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
+[node name="Position2D5" type="Node2D" parent="Enemies/BuffedSlime/PatrolPoints"]
 position = Vector2(-80, 60)
 
-[node name="Position2D6" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
+[node name="Position2D6" type="Node2D" parent="Enemies/BuffedSlime/PatrolPoints"]
 position = Vector2(80, 60)
 
-[node name="Position2D7" type="Node2D" parent="Enemies/Slime/PatrolPoints"]
+[node name="Position2D7" type="Node2D" parent="Enemies/BuffedSlime/PatrolPoints"]
 position = Vector2(0, 60)
 
-[node name="BridgeSlime" parent="Enemies" instance=ExtResource("3_7fhuu")]
+[node name="BridgeSlime" type="Node2D" parent="Enemies"]
 position = Vector2(750, 200)
+
+[node name="Slime" parent="Enemies/BridgeSlime" instance=ExtResource("3_7fhuu")]
 
 [node name="Interactables" type="Node2D" parent="."]
 y_sort_enabled = true

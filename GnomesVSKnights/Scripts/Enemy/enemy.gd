@@ -5,7 +5,6 @@ class_name Enemy
 @export var patrol_route: NodePath
 @export var pauseUponReachingPoint: bool = false
 
-var player = null
 var patrol_points = []
 var current_point = null
 
@@ -33,12 +32,11 @@ func enter():
 	state_machine.enter(self)
 
 	# Signal Node Connection
-	self.detection_area.connect("body_entered", Callable(self, "_on_detection_area_body_entered"))
-	self.detection_area.connect("body_exited", Callable(self, "_on_detection_area_body_exited"))
-	self.attack_area.connect("body_entered", Callable(self, "_on_attack_area_body_entered"))
-	self.attack_area.connect("body_exited", Callable(self, "_on_attack_area_body_exited"))
+	self.target_area.connect("body_entered", Callable(self, "_on_target_area_body_entered"))
+	self.target_area.connect("body_exited", Callable(self, "_on_target_area_body_exited"))
 	
 func update(delta):
+	_update(delta)
 	if not is_alive:
 		return
 	state_machine.update(delta)
@@ -46,25 +44,13 @@ func update(delta):
 func move():
 	CharacterMovement.setMovement(self, direction, animator, speed)
 
-func _on_detection_area_body_entered(body):
-	if body.has_method("player"):  # Ensure the body is the player
-		player = body
-		change_state(chase_state)
-
-func _on_detection_area_body_exited(body):
-	if body.has_method("player"):  # Ensure the body is the player
-		player = null
-		change_state(patrol_state)
-
-func _on_attack_area_body_entered(body):
+func _on_target_area_body_entered(body):
 	if body.has_method("player"):
 		target = body
-		change_state(attack_state)
 
-func _on_attack_area_body_exited(body):
+func _on_target_area_body_exited(body):
 	if body == target:
 		target = null
-		change_state(chase_state)
 
 func change_state(new_state):
 	if state_machine:

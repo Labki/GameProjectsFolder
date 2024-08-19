@@ -2,10 +2,9 @@ extends BaseCharacter
 
 @onready var animator_node: AnimatedSprite2D = $sprite
 @onready var healthbar_node: ProgressBar = $health_bar
-@onready var attack_area_node: Area2D = $attack_area
+@onready var attack_area_node: Area2D = $target_area
 @onready var inventory = $inventory
 
-var enemy: CharacterBody2D
 var nearby_item = null 
 
 func _ready():
@@ -19,7 +18,7 @@ func _ready():
 func _physics_process(delta):
 	if not is_alive:
 		return
-	_update()
+	_update(delta)
 	direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 	CharacterMovement.setMovement(self, direction, animator, speed)
 	attack_area()
@@ -32,7 +31,7 @@ func _physics_process(delta):
 
 func _input(event):
 	if InputChecker.is_attacking() and attack_timer <= 0:
-		attack(enemy)
+		attack(target)
 		attack_timer = attack_cooldown
 		speed = attack_speed
 	InputChecker.update_speed(self)
@@ -40,21 +39,20 @@ func _input(event):
 func attack_area(): 
 	# Enable the specific node based on direction
 	var specific_node = attack_area_node.get_node(current_dir)
-	if specific_node.disabled == true:
-		specific_node.disabled = false
+	specific_node.disabled = false
 
 	for child in attack_area_node.get_children():
 		if not child == specific_node:
 			child.disabled = true
 
-# Check for enemy
-func _on_attack_area_body_entered(body):
+# Check for target
+func _on_target_area_body_entered(body):
 	if body.has_method("enemy"):
-		enemy = body
+		target = body
 
-func _on_attack_area_body_exited(body):
+func _on_target_area_body_exited(body):
 	if body.has_method("enemy"):
-		enemy = null
+		target = null
 
 # Handle entering the interaction range of an item
 func _on_item_area_entered(item):

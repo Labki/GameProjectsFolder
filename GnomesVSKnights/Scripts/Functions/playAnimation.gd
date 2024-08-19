@@ -14,7 +14,7 @@ func play(_animator, _animation, new_dir:= ""):
 	if not character is CharacterBody2D:
 		animator.play(animation)
 		return
-	if character.preventAnimation and character.is_alive:
+	if character.preventAnimation and character.is_alive and animation != "death":
 		return
 
 	# Set variables for playing new animation
@@ -26,19 +26,16 @@ func play(_animator, _animation, new_dir:= ""):
 	var anim_name = anim_dir + "_" + animation
 	if animation == "death":
 		anim_name = animation
-	if animation == "attack":
-		character.is_attacking = true
-		animator.play(anim_name)
-	elif animator.animation != anim_name:
+	if animator.animation != anim_name:
 		animator.play(anim_name)
 
 func _on_animation_looped():
 	pass
 	
 func _on_animation_finished():
-	if animation == "attack":
+	if animator.animation == "attack":
 		if character.has_method("on_attack_animation_finished"):
 			character.on_attack_animation_finished()
-	if animation == "death":
+	if animator.animation == "death":
 		if character.has_method("on_death_animation_finished"):
 			character.on_death_animation_finished()

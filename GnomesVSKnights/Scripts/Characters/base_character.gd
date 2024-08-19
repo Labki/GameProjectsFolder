@@ -3,12 +3,17 @@ extends CharacterBody2D
 
 class_name BaseCharacter
 
+#region Properties
 # Exports
 @export var health: int = 100
 @export var max_health: int = 100
 @export var attack_power: int = 10
 @export var attack_cooldown: float = 1.0
+@export var attack_range: int = 10
+@export var hit_frame: int = 1
 @export var speed: int = 50
+@export var crit_rate: float = 0.1
+@export var crit_dmg: float = 2.0 
 
 # Internal variables
 var base_speed: int
@@ -30,17 +35,20 @@ var healthbar: ProgressBar
 var health_timer: Timer
 
 var PlayAnimation = Global.playAnimation.new()
-
+#endregion
+#region Base Functions
 func _enter():
 	current_dir = "right"
 	update_health()
 
-func _update():
-	if is_attacking == true:
+func _update(delta):
+	if is_attacking:
 		preventAnimation = true
 	else:
 		preventAnimation = false
 
+#endregion
+#region Set Outside Nodes
 # Set outiside nodes
 func set_animator(animator_node: AnimatedSprite2D) -> void:
 	animator = animator_node
@@ -58,6 +66,8 @@ func set_healthbar(healthbar_node: ProgressBar) -> void:
 		if health_timer:
 			health_timer.connect("timeout", Callable(self, "_start_health_regen"))
 
+#endregion
+#region Character Health
 # Take Damage from attacker
 func take_damage(amount: int) -> void:
 	health -= amount
@@ -78,15 +88,51 @@ func update_health():
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
-		
+
 func _start_health_regen():
 	if health < max_health and health > 0:
 		heal(max_health / 10)
+#endregion
+#region Combat
+
+# Determine if the attack is a critical hit
+func is_critical_hit() -> bool:
+	return randf() < crit_rate
+
+func perform_attack():
+	if is_target_in_attack_range():
+		target.take_damage(apply_damage(attack_power))
+
+func is_target_in_attack_range() -> bool:
+	if target == null:
+		return false
+	return self.global_position.distance_to(target.global_position) <= attack_range
+
+func apply_damage(base_damage: int) -> int:
+	var damage = base_damage
+	if is_critical_hit():
+		damage *= crit_dmg
+	return damage
 
 # Attack the target
 func attack(_target: BaseCharacter) -> void:
 	target = _target
+	is_attacking = true
 	PlayAnimation.play(animator, "attack")
+	
+	var animation_name = animator.animation 
+	var total_frames = animator.sprite_frames.get_frame_count(animation_name)
+	
+	while is_attacking:
+		var current_frame = animator.frame
+		if current_frame == hit_frame:
+			if is_target_in_attack_range() and target:
+				target.take_damage(apply_damage(attack_power))
+		if current_frame >= total_frames - 1:
+			is_attacking = false
+
+		await get_tree().process_frame
+#endregion
 
 # The end of an era
 func die():
@@ -100,8 +146,6 @@ func on_attack_animation_finished():
 	else:
 		pass
 	is_attacking = false
-	if target:
-		target.take_damage(attack_power)
 
 # Death animation done
 func on_death_animation_finished():
