@@ -13,6 +13,8 @@ func enter(_owner):
 	state_owner.move()
 
 func update(delta):
+	if state_owner.target:
+		state_owner.change_state(state_owner.chase_state)
 	elapsed_time += delta
 	if elapsed_time >= idle_duration:
 		# Resume patrol or other actions after idle duration

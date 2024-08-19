@@ -1183,12 +1183,9 @@ scale = Vector2(2, 2)
 health = 20
 max_health = 20
 attack_power = 5
-attack_cooldown = 1.0
 attack_range = 40
-hit_frame = 1
 speed = 100
 crit_rate = 0.01
-crit_dmg = 2.0
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -1234,6 +1231,88 @@ position = Vector2(0, 60)
 position = Vector2(750, 200)
 
 [node name="Slime" parent="Enemies/BridgeSlime" instance=ExtResource("3_7fhuu")]
+position = Vector2(0, -15)
+scale = Vector2(1.5, 1.5)
+
+[node name="Slime2" parent="Enemies/BridgeSlime" instance=ExtResource("3_7fhuu")]
+position = Vector2(0, 5)
+scale = Vector2(1.5, 1.5)
+pauseUponReachingPoint = true
+health = 10
+max_health = 10
+attack_range = 25
+hit_frame = 6
+crit_dmg = 1.5
+
+[node name="Slime3" parent="Enemies/BridgeSlime" instance=ExtResource("3_7fhuu")]
+position = Vector2(0, 25)
+scale = Vector2(1.5, 1.5)
+pauseUponReachingPoint = true
+health = 10
+max_health = 10
+attack_range = 25
+hit_frame = 6
+crit_dmg = 1.5
+
+[node name="Slime4" parent="Enemies/BridgeSlime" instance=ExtResource("3_7fhuu")]
+position = Vector2(290, 23)
+scale = Vector2(1.5, 1.5)
+pauseUponReachingPoint = true
+health = 10
+max_health = 10
+attack_range = 25
+hit_frame = 6
+crit_dmg = 1.5
+
+[node name="Slime5" parent="Enemies/BridgeSlime" instance=ExtResource("3_7fhuu")]
+position = Vector2(420, 249)
+scale = Vector2(1.5, 1.5)
+pauseUponReachingPoint = true
+health = 10
+max_health = 10
+attack_range = 25
+hit_frame = 6
+crit_dmg = 1.5
+
+[node name="Slime6" parent="Enemies/BridgeSlime" instance=ExtResource("3_7fhuu")]
+position = Vector2(450, 450)
+scale = Vector2(1.5, 1.5)
+pauseUponReachingPoint = true
+health = 10
+max_health = 10
+attack_range = 25
+hit_frame = 6
+crit_dmg = 1.5
+
+[node name="Slime7" parent="Enemies/BridgeSlime" instance=ExtResource("3_7fhuu")]
+position = Vector2(-350, 125)
+scale = Vector2(1.5, 1.5)
+pauseUponReachingPoint = true
+health = 10
+max_health = 10
+attack_range = 25
+hit_frame = 6
+crit_dmg = 1.5
+
+[node name="Slime8" parent="Enemies/BridgeSlime" instance=ExtResource("3_7fhuu")]
+position = Vector2(398, -109)
+scale = Vector2(1.5, 1.5)
+pauseUponReachingPoint = true
+health = 10
+max_health = 10
+attack_range = 25
+hit_frame = 6
+crit_dmg = 1.5
+
+[node name="Slime9" parent="Enemies/BridgeSlime" instance=ExtResource("3_7fhuu")]
+position = Vector2(-50, 0)
+scale = Vector2(1.5, 1.5)
+pauseUponReachingPoint = true
+health = 10
+max_health = 10
+attack_range = 25
+hit_frame = 6
+crit_dmg = 1.5
 
 [node name="Interactables" type="Node2D" parent="."]
 y_sort_enabled = true

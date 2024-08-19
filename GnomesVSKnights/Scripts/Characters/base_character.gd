@@ -99,14 +99,15 @@ func _start_health_regen():
 func is_critical_hit() -> bool:
 	return randf() < crit_rate
 
-func perform_attack():
-	if is_target_in_attack_range():
-		target.take_damage(apply_damage(attack_power))
+func perform_attack(__target):
+	print("target hit", __target)
+	if is_target_in_attack_range(__target) and __target:
+		__target.take_damage(apply_damage(attack_power))
 
-func is_target_in_attack_range() -> bool:
-	if target == null:
+func is_target_in_attack_range(newTarget) -> bool:
+	if newTarget == null:
 		return false
-	return self.global_position.distance_to(target.global_position) <= attack_range
+	return self.global_position.distance_to(newTarget.global_position) <= attack_range
 
 func apply_damage(base_damage: int) -> int:
 	var damage = base_damage
@@ -126,8 +127,11 @@ func attack(_target: BaseCharacter) -> void:
 	while is_attacking:
 		var current_frame = animator.frame
 		if current_frame == hit_frame:
-			if is_target_in_attack_range() and target:
-				target.take_damage(apply_damage(attack_power))
+			if self.has_method("player"):
+				for this in self.targets_in_range:
+					perform_attack(this)
+			else:
+				perform_attack(target)
 		if current_frame >= total_frames - 1:
 			is_attacking = false
 

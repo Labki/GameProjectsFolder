@@ -5,7 +5,8 @@ extends BaseCharacter
 @onready var attack_area_node: Area2D = $target_area
 @onready var inventory = $inventory
 
-var nearby_item = null 
+var nearby_item = null
+var targets_in_range: Array = []
 
 func _ready():
 	set_animator(animator_node)
@@ -30,6 +31,8 @@ func _physics_process(delta):
 		nearby_item.interact()
 
 func _input(event):
+	if not is_alive:
+		return
 	if InputChecker.is_attacking() and attack_timer <= 0:
 		attack(target)
 		attack_timer = attack_cooldown
@@ -47,12 +50,12 @@ func attack_area():
 
 # Check for target
 func _on_target_area_body_entered(body):
-	if body.has_method("enemy"):
-		target = body
+	if body.is_in_group("Enemies"):
+		targets_in_range.append(body)
 
 func _on_target_area_body_exited(body):
-	if body.has_method("enemy"):
-		target = null
+	if body.is_in_group("Enemies"):
+		targets_in_range.erase(body)
 
 # Handle entering the interaction range of an item
 func _on_item_area_entered(item):

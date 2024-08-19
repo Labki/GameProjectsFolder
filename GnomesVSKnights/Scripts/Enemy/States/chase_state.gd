@@ -14,7 +14,7 @@ func update(_delta):
 	state_owner.direction = (target_position - state_owner.global_position).normalized()
 	state_owner.move()
 
-	if state_owner.is_target_in_attack_range():
+	if state_owner.is_target_in_attack_range(state_owner.target):
 		state_owner.change_state(state_owner.attack_state)
 
 func exit():
