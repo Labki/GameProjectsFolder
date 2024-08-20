@@ -15,7 +15,11 @@ class_name BaseCharacter
 @export var hit_frame: int = 1
 @export var speed: float = 100
 @export var crit_rate: float = 0.1
-@export var crit_dmg: float = 2.0 
+@export var crit_dmg: float = 2.0
+@export var level: int = 1
+@export var experience: int = 0
+@export var experience_to_next_level: int = 100
+@export var experience_gain_rate: float = 1.0
 
 # Internal variables
 var base_speed: float
@@ -29,7 +33,6 @@ var direction = Vector2()
 # Character state
 var is_alive: bool = true
 var is_attacking: bool = false
-var is_fleeing: bool = false
 var is_running: bool = false
 
 # Child Nodes
@@ -117,6 +120,7 @@ func is_critical_hit() -> bool:
 func perform_attack(__target):
 	if is_target_in_attack_range(__target) and __target:
 		__target.take_damage(apply_damage(attack_power))
+		gain_experience(__target)
 
 func is_target_in_attack_range(newTarget) -> bool:
 	if newTarget == null:
@@ -154,6 +158,28 @@ func attack(_target: BaseCharacter) -> void:
 
 		await get_tree().process_frame
 #endregion
+
+#region Leveling System
+func gain_experience(target: BaseCharacter) -> void:
+	experience += int(target.max_health * experience_gain_rate) # Example calculation, adjust as necessary
+	if experience >= experience_to_next_level:
+		level_up()
+
+func level_up() -> void:
+	level += 1
+	experience -= experience_to_next_level
+	experience_to_next_level = int(experience_to_next_level * 1.5) #Increase experience needed for the next level
+	
+	#Increase stats on level up
+	max_health += 10
+	attack_power += 2
+	crit_rate += 0.01
+	
+	#Heal character to full health on level up
+	#health = max_health
+	#update_health()
+#endregion
+
 
 # The end of an era
 func die():
