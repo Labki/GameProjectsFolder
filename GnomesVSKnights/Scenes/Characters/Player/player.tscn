@@ -474,7 +474,11 @@ scale = Vector2(0.1, 0.1)
 show_percentage = false
 
 [node name="regen_timer" type="Timer" parent="health_bar"]
-wait_time = 5.0
+wait_time = 2.0
+autostart = true
+
+[node name="damage_timer" type="Timer" parent="health_bar"]
+wait_time = 8.0
 autostart = true
 
 [node name="inventory" parent="." instance=ExtResource("3_wsbmi")]

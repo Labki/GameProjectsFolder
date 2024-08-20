@@ -1,5 +1,6 @@
-class_name AttackState
 extends State
+
+class_name AttackState
 
 var PlayAnimation = Global.playAnimation.new()
 
@@ -10,7 +11,7 @@ func enter(_owner):
 func update(delta):
 	if (state_owner.health < state_owner.max_health / 5):
 		pass
-	if state_owner.target == null and not state_owner.is_attacking:
+	if not state_owner.is_target_in_attack_range(state_owner.target) and not state_owner.is_attacking:
 		state_owner.change_state(state_owner.chase_state)
 	else:
 		# Manage the attack cooldown and perform the attack if ready

@@ -31,17 +31,17 @@ region = Rect2(160, 256, 32, 32)
 atlas = ExtResource("2_nnmct")
 region = Rect2(192, 256, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ee63a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3clsi"]
 atlas = ExtResource("2_nnmct")
-region = Rect2(0, 352, 32, 32)
+region = Rect2(0, 288, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ooch8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctdh7"]
 atlas = ExtResource("2_nnmct")
-region = Rect2(32, 352, 32, 32)
+region = Rect2(32, 288, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lm2ti"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_csvox"]
 atlas = ExtResource("2_nnmct")
-region = Rect2(64, 352, 32, 32)
+region = Rect2(64, 288, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_583f8"]
 atlas = ExtResource("2_nnmct")
@@ -159,17 +159,17 @@ region = Rect2(160, 192, 32, 32)
 atlas = ExtResource("2_nnmct")
 region = Rect2(192, 192, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3clsi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee63a"]
 atlas = ExtResource("2_nnmct")
-region = Rect2(0, 288, 32, 32)
+region = Rect2(0, 352, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctdh7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooch8"]
 atlas = ExtResource("2_nnmct")
-region = Rect2(32, 288, 32, 32)
+region = Rect2(32, 352, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_csvox"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm2ti"]
 atlas = ExtResource("2_nnmct")
-region = Rect2(64, 288, 32, 32)
+region = Rect2(64, 352, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j3sxu"]
 atlas = ExtResource("2_nnmct")
@@ -377,13 +377,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ee63a")
+"texture": SubResource("AtlasTexture_3clsi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ooch8")
+"texture": SubResource("AtlasTexture_ctdh7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lm2ti")
+"texture": SubResource("AtlasTexture_csvox")
 }],
 "loop": true,
 "name": &"back_flee",
@@ -503,13 +503,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3clsi")
+"texture": SubResource("AtlasTexture_ee63a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ctdh7")
+"texture": SubResource("AtlasTexture_ooch8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_csvox")
+"texture": SubResource("AtlasTexture_lm2ti")
 }],
 "loop": true,
 "name": &"front_flee",
@@ -696,7 +696,6 @@ radius = 5.0
 
 [node name="Slime" type="CharacterBody2D" groups=["Enemies"]]
 script = ExtResource("1_8oie3")
-attack_power = 8
 attack_cooldown = 2.0
 hit_frame = 6
 speed = 50.0
@@ -704,7 +703,7 @@ crit_dmg = 1.5
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kmgbb")
-animation = &"side_attack"
+animation = &"side_flee"
 offset = Vector2(0, -4)
 
 [node name="target_area" type="Area2D" parent="."]
@@ -729,5 +728,9 @@ scale = Vector2(0.1, 0.1)
 show_percentage = false
 
 [node name="regen_timer" type="Timer" parent="health_bar"]
-wait_time = 5.0
+wait_time = 2.0
+autostart = true
+
+[node name="damage_timer" type="Timer" parent="health_bar"]
+wait_time = 10.0
 autostart = true

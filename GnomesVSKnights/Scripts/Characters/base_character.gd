@@ -5,8 +5,10 @@ class_name BaseCharacter
 
 #region Properties
 # Exports
-@export var health: int = 25
-@export var max_health: int = 25
+@export var health: float = 25
+@export var max_health: float = 25
+@export var regeneration: float = 2.5
+@export var regen_cooldown: float = 8.0
 @export var attack_power: float = 10
 @export var attack_cooldown: float = 1.0
 @export var attack_range: float = 25 
@@ -25,14 +27,16 @@ var target: BaseCharacter = null
 var direction = Vector2()
 
 # Character state
-var is_attacking: bool = false
 var is_alive: bool = true
+var is_attacking: bool = false
+var is_fleeing: bool = false
 var is_running: bool = false
 
 # Child Nodes
 var animator: AnimatedSprite2D
 var healthbar: ProgressBar
 var health_timer: Timer
+var damage_timer: Timer
 
 var PlayAnimation = Global.playAnimation.new()
 #endregion
@@ -61,11 +65,16 @@ func set_healthbar(healthbar_node: ProgressBar) -> void:
 	healthbar = healthbar_node
 	if healthbar:
 		for child in healthbar.get_children():
-			if child is Timer:
+			if child.name == "regen_timer":
 				health_timer = child
+			if child.name == "damage_timer":
+				damage_timer = child
 				break
 		if health_timer:
 			health_timer.connect("timeout", Callable(self, "_start_health_regen"))
+		if damage_timer:
+			damage_timer.wait_time = regen_cooldown
+			damage_timer.one_shot = true
 
 #endregion
 #region Character Health
@@ -73,6 +82,11 @@ func set_healthbar(healthbar_node: ProgressBar) -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	update_health()
+	if damage_timer.is_stopped():
+		damage_timer.start()
+	else:
+		damage_timer.stop()
+		damage_timer.start()
 	if health <= 0:
 		die()
 
@@ -91,8 +105,8 @@ func update_health():
 		healthbar.visible = true
 
 func _start_health_regen():
-	if health < max_health and health > 0:
-		heal(max_health / 10)
+	if health < max_health and health > 0 and damage_timer.is_stopped():
+		heal(regeneration)
 #endregion
 #region Combat
 
