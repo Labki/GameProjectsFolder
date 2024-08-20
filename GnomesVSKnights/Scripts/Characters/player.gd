@@ -29,6 +29,8 @@ func _physics_process(delta):
 		
 	if InputChecker.is_interacting() and nearby_item:
 		nearby_item.interact()
+	if InputChecker.toggle_inventory():
+		inventory.toggle()
 
 func _input(event):
 	var _event = event

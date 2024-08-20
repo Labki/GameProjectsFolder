@@ -13,6 +13,10 @@ func is_attacking() -> bool:
 # Check if the interact key is pressed
 func is_interacting() -> bool:
 	return Input.is_action_just_pressed("Interact")
+	
+# Check if the inventory key is pressed
+func toggle_inventory() -> bool:
+	return Input.is_action_just_pressed("Inventory")
 
 # Update player's speed based on input
 func update_speed(character: BaseCharacter) -> void:

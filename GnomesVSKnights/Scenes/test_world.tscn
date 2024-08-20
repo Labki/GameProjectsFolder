@@ -1288,3 +1288,7 @@ flaming = true
 [node name="apple" parent="Interactables/Apples" instance=ExtResource("4_gqjrr")]
 position = Vector2(205, 295)
 collectable = true
+
+[node name="apple2" parent="Interactables/Apples" instance=ExtResource("4_gqjrr")]
+position = Vector2(150, 250)
+collectable = true

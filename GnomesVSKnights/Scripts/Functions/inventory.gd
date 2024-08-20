@@ -1,12 +1,25 @@
 extends Control
 
-class_name Inventory  # This can stay
+class_name Inventory
 
-# A dictionary to hold the items in the inventory
-var items = {}
-
-# Reference to the VBoxContainer that holds the item labels
 @onready var item_list_container = $VBoxContainer
+
+var items = {}
+var is_open = false
+
+func _ready():
+	toggle()
+
+func _process(delta):
+	pass
+	
+func toggle():
+	if is_open:
+		self.visible = true
+		is_open = false
+	else:
+		self.visible = false
+		is_open = true
 
 # Method to add an item to the inventory
 func add_item(item_name: String, quantity: int = 1):
