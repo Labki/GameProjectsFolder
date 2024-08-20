@@ -5,19 +5,19 @@ class_name BaseCharacter
 
 #region Properties
 # Exports
-@export var health: int = 100
-@export var max_health: int = 100
-@export var attack_power: int = 10
+@export var health: int = 25
+@export var max_health: int = 25
+@export var attack_power: float = 10
 @export var attack_cooldown: float = 1.0
-@export var attack_range: int = 10
+@export var attack_range: float = 25 
 @export var hit_frame: int = 1
-@export var speed: int = 50
+@export var speed: float = 100
 @export var crit_rate: float = 0.1
 @export var crit_dmg: float = 2.0 
 
 # Internal variables
-var base_speed: int
-var attack_speed: int
+var base_speed: float
+var attack_speed: float
 var current_dir: String
 var attack_timer: float = 0.0
 var preventAnimation: bool = false
@@ -42,6 +42,7 @@ func _enter():
 	update_health()
 
 func _update(delta):
+	var _delta = delta
 	if is_attacking:
 		preventAnimation = true
 	else:
@@ -100,7 +101,6 @@ func is_critical_hit() -> bool:
 	return randf() < crit_rate
 
 func perform_attack(__target):
-	print("target hit", __target)
 	if is_target_in_attack_range(__target) and __target:
 		__target.take_damage(apply_damage(attack_power))
 
@@ -109,7 +109,7 @@ func is_target_in_attack_range(newTarget) -> bool:
 		return false
 	return self.global_position.distance_to(newTarget.global_position) <= attack_range
 
-func apply_damage(base_damage: int) -> int:
+func apply_damage(base_damage: float) -> float:
 	var damage = base_damage
 	if is_critical_hit():
 		damage *= crit_dmg
@@ -121,17 +121,20 @@ func attack(_target: BaseCharacter) -> void:
 	is_attacking = true
 	PlayAnimation.play(animator, "attack")
 	
+	var hit_frame_reached = false
 	var animation_name = animator.animation 
 	var total_frames = animator.sprite_frames.get_frame_count(animation_name)
 	
 	while is_attacking:
 		var current_frame = animator.frame
-		if current_frame == hit_frame:
+		if current_frame == hit_frame and not hit_frame_reached:
 			if self.has_method("player"):
 				for this in self.targets_in_range:
 					perform_attack(this)
 			else:
 				perform_attack(target)
+			hit_frame_reached = true
+
 		if current_frame >= total_frames - 1:
 			is_attacking = false
 

@@ -31,6 +31,7 @@ func _physics_process(delta):
 		nearby_item.interact()
 
 func _input(event):
+	var _event = event
 	if not is_alive:
 		return
 	if InputChecker.is_attacking() and attack_timer <= 0:
