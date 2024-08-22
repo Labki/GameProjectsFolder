@@ -79,8 +79,8 @@ func _on_item_area_exited(item):
 		item.disconnect("collected", Callable(self, "collect_item"))
 		nearby_item = null
 
-func collect_item(item: InventoryItem):
-	inventory.add_item(item)
+func collect_item(item: InventoryItem, amount: int = 1):
+	inventory.add_item(item, amount)
 
 func player():
 	pass

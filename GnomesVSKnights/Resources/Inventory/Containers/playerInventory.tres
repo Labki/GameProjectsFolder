@@ -1,80 +1,9 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=21 format=3 uid="uid://dx4n8u462otx2"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://dx4n8u462otx2"]
 
-[ext_resource type="Script" path="res://Scripts/Functions/Invertory/inventory_slot.gd" id="2_5s7h5"]
 [ext_resource type="Script" path="res://Scripts/Functions/Invertory/inventory.gd" id="2_d13v8"]
-
-[sub_resource type="Resource" id="Resource_feryu"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_ocst1"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_q45qt"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_vd3p6"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_dk2gj"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_i6v3b"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_5bf5l"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_nl5n6"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_adxk3"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_qojcl"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_75y0x"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_02pbo"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_6kif5"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_capeq"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_kiblo"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_rr5e5"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_u4yom"]
-script = ExtResource("2_5s7h5")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_8sbq0"]
-script = ExtResource("2_5s7h5")
-amount = 0
 
 [resource]
 script = ExtResource("2_d13v8")
-slots = Array[ExtResource("2_5s7h5")]([SubResource("Resource_feryu"), SubResource("Resource_ocst1"), SubResource("Resource_q45qt"), SubResource("Resource_vd3p6"), SubResource("Resource_dk2gj"), SubResource("Resource_i6v3b"), SubResource("Resource_5bf5l"), SubResource("Resource_nl5n6"), SubResource("Resource_adxk3"), SubResource("Resource_qojcl"), SubResource("Resource_75y0x"), SubResource("Resource_02pbo"), SubResource("Resource_6kif5"), SubResource("Resource_capeq"), SubResource("Resource_kiblo"), SubResource("Resource_rr5e5"), SubResource("Resource_u4yom"), SubResource("Resource_8sbq0")])
+slots = Array[Resource("res://Scripts/Functions/Invertory/inventory_slot.gd")]([])
+max_slots = 18
+max_stack_size = 999

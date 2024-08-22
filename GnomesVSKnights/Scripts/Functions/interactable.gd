@@ -37,7 +37,7 @@ func interact():
 
 func collect():
 	_collect()
-	emit_signal("collected", get_item())
+	emit_signal("collected", get_item(), get_amount())
 	queue_free()
 
 func _interact():
@@ -46,5 +46,8 @@ func _interact():
 func _collect():
 	pass # Override this in derived classes for extra stuff before collecting
 	
+func get_amount() -> int:
+	return 1 # Override this in derived classes to get a specific amount per item
+
 func get_item() -> InventoryItem:
 	return null  # Override this in derived classes to return specific item names

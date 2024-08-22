@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://r1m74e06yiqr"]
+[gd_scene load_steps=8 format=3 uid="uid://r1m74e06yiqr"]
 
 [ext_resource type="PackedScene" uid="uid://c7hjd5ytrwmdo" path="res://Scenes/Characters/Player/player.tscn" id="2_apj8v"]
 [ext_resource type="Texture2D" uid="uid://3eojlt08par4" path="res://Assets/Graphics/Tilesets/Serene Village/Full Tileset/Serene Village 32x32.png" id="2_sgn3w"]
 [ext_resource type="PackedScene" uid="uid://c7otkw8edr0o3" path="res://Scenes/Characters/Enemy/slime.tscn" id="3_7fhuu"]
-[ext_resource type="Resource" uid="uid://dx4n8u462otx2" path="res://Resources/Inventory/Containers/playerInventory.tres" id="3_bhn0u"]
 [ext_resource type="PackedScene" uid="uid://rnlxfb1naxyi" path="res://Scenes/Objects/campfire.tscn" id="3_gej56"]
 [ext_resource type="PackedScene" uid="uid://c8sg7ema64qam" path="res://Scenes/Objects/apple.tscn" id="4_gqjrr"]
 
@@ -1181,7 +1180,6 @@ layer_3/tile_data = PackedInt32Array(458771, 1179648, 24, 983041, 1179648, 24, 1
 
 [node name="Player" parent="." instance=ExtResource("2_apj8v")]
 scale = Vector2(2, 2)
-inventory = ExtResource("3_bhn0u")
 attack_range = 40.0
 hit_frame = 2
 
@@ -1289,8 +1287,10 @@ flaming = true
 
 [node name="apple" parent="Interactables/Apples" instance=ExtResource("4_gqjrr")]
 position = Vector2(205, 295)
+item_amount = 3
 collectable = true
 
 [node name="apple2" parent="Interactables/Apples" instance=ExtResource("4_gqjrr")]
 position = Vector2(150, 250)
+item_amount = 2
 collectable = true
