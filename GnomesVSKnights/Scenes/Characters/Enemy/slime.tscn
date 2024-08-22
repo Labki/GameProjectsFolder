@@ -732,5 +732,4 @@ wait_time = 2.0
 autostart = true
 
 [node name="damage_timer" type="Timer" parent="health_bar"]
-wait_time = 10.0
 autostart = true

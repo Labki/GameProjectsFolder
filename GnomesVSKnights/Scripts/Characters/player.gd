@@ -3,7 +3,10 @@ extends BaseCharacter
 @onready var animator_node: AnimatedSprite2D = $sprite
 @onready var healthbar_node: ProgressBar = $health_bar
 @onready var attack_area_node: Area2D = $target_area
-@onready var inventory = $inventory
+@onready var ui = $UI/ui_control/ui_margin
+@onready var inventory: InvUI = ui.get_node("inventory_ui")
+
+@export var Inv: Inventory
 
 var nearby_item = null
 var targets_in_range: Array = []

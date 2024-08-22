@@ -120,7 +120,8 @@ func is_critical_hit() -> bool:
 func perform_attack(__target):
 	if is_target_in_attack_range(__target) and __target:
 		__target.take_damage(apply_damage(attack_power))
-		gain_experience(__target)
+		if __target.health <= 0:
+			gain_experience(__target)
 
 func is_target_in_attack_range(newTarget) -> bool:
 	if newTarget == null:
