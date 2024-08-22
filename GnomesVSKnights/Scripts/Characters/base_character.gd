@@ -34,6 +34,7 @@ var direction = Vector2()
 var is_alive: bool = true
 var is_attacking: bool = false
 var is_running: bool = false
+var deny_movement: bool = false
 
 # Child Nodes
 var animator: AnimatedSprite2D

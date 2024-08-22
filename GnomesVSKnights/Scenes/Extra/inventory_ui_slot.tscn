@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7r32yes5aheo"]
+[gd_scene load_steps=3 format=3 uid="uid://btgp1q4cmoi4o"]
 
 [ext_resource type="Texture2D" uid="uid://blf6xcl22nc08" path="res://Assets/AsepriteMade/UI/Inventory/inventory-slot.png" id="1_dvka1"]
 [ext_resource type="Script" path="res://Scripts/Functions/Invertory/inventory_ui_slot.gd" id="1_uv4xk"]
@@ -27,3 +27,18 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(0.25, 0.25)
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 42.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+text = "999"
+vertical_alignment = 2

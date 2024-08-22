@@ -424,7 +424,7 @@ radius = 5.38516
 y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_0anl7")
-Inv = ExtResource("2_obsne")
+inventory = ExtResource("2_obsne")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ptrey")

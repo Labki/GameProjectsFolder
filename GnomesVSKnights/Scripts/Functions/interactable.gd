@@ -7,7 +7,7 @@ class_name Interactable
 var area_node = null
 
 signal interacted
-signal collected(item_name)
+signal collected(item)
 
 func _init_interactable():
 	pass # Override this in derived classes for extra stuff
@@ -37,7 +37,7 @@ func interact():
 
 func collect():
 	_collect()
-	emit_signal("collected", get_item_name())
+	emit_signal("collected", get_item())
 	queue_free()
 
 func _interact():
@@ -46,5 +46,5 @@ func _interact():
 func _collect():
 	pass # Override this in derived classes for extra stuff before collecting
 	
-func get_item_name():
-	return "Unknown Item"  # Override this in derived classes to return specific item names
+func get_item() -> InventoryItem:
+	return null  # Override this in derived classes to return specific item names

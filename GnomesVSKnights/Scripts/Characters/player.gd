@@ -4,9 +4,9 @@ extends BaseCharacter
 @onready var healthbar_node: ProgressBar = $health_bar
 @onready var attack_area_node: Area2D = $target_area
 @onready var ui = $UI/ui_control/ui_margin
-@onready var inventory: InvUI = ui.get_node("inventory_ui")
+@onready var inventoryUI: InventoryUI = ui.get_node("inventory_ui")
 
-@export var Inv: Inventory
+@export var inventory: Inventory
 
 var nearby_item = null
 var targets_in_range: Array = []
@@ -23,28 +23,32 @@ func _physics_process(delta):
 	if not is_alive:
 		return
 	_update(delta)
-	direction = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
-	CharacterMovement.setMovement(self, direction, animator, speed)
+	handle_movement()
 	attack_area()
 	
 	if attack_timer > 0:
 		attack_timer -= delta
-		
-	if InputChecker.is_interacting() and nearby_item:
-		nearby_item.interact()
-	if InputChecker.toggle_inventory():
-		inventory.toggle()
 
 func _input(event):
 	var _event = event
 	if not is_alive:
 		return
+	
 	if InputChecker.is_attacking() and attack_timer <= 0:
 		attack(target)
 		attack_timer = attack_cooldown
 		speed = attack_speed
+	if InputChecker.is_interacting() and nearby_item:
+		nearby_item.interact()
+	if InputChecker.toggle_inventory():
+		inventoryUI.toggle()
 	InputChecker.update_speed(self)
-	
+
+func handle_movement():
+	deny_movement = inventoryUI.is_open
+	direction = Vector2.ZERO if deny_movement else Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
+	CharacterMovement.setMovement(self, direction, animator, speed)
+
 func attack_area(): 
 	# Enable the specific node based on direction
 	var specific_node = attack_area_node.get_node(current_dir)
@@ -75,8 +79,8 @@ func _on_item_area_exited(item):
 		item.disconnect("collected", Callable(self, "collect_item"))
 		nearby_item = null
 
-func collect_item(item_name: String):
-	inventory.add_item(item_name)
+func collect_item(item: InventoryItem):
+	inventory.add_item(item)
 
 func player():
 	pass

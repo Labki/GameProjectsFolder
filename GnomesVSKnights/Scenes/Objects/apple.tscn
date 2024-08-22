@@ -23,6 +23,7 @@ radius = 27.1662
 
 [node name="apple" type="Node2D" groups=["Interactables"]]
 script = ExtResource("1_h0h1e")
+inv_texture = ExtResource("1_guhwk")
 
 [node name="AppleSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)
