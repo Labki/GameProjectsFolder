@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://btgp1q4cmoi4o" path="res://Scenes/Extra/inventory_ui_slot.tscn" id="3_u2qkj"]
 
 [node name="inventory_ui" type="Control"]
-custom_minimum_size = Vector2(124, 64)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,15 +26,20 @@ patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
-metadata/_edit_use_anchors_ = true
 
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+[node name="PCont" type="PanelContainer" parent="NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GCont" type="GridContainer" parent="NinePatchRect/PCont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
 columns = 6
