@@ -703,7 +703,7 @@ crit_dmg = 1.5
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kmgbb")
-animation = &"side_flee"
+animation = &"front_idle"
 offset = Vector2(0, -4)
 
 [node name="target_area" type="Area2D" parent="."]
