@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7wandlnmiyoa"]
+
+[ext_resource type="PackedScene" uid="uid://bm2wlv33vintu" path="res://Scenes/Extra/ui/character/character_image.tscn" id="1_2p250"]
+[ext_resource type="PackedScene" uid="uid://copbaai8dsx00" path="res://Scenes/Extra/ui/character/character_bars.tscn" id="2_e4o0h"]
+
+[node name="character_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1716.0
+offset_bottom = -1016.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="image_ui" parent="." instance=ExtResource("1_2p250")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="bars_ui" parent="." instance=ExtResource("2_e4o0h")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 63.0
+offset_right = 203.0
+offset_bottom = 64.0
+grow_horizontal = 1
+grow_vertical = 1

@@ -18,8 +18,6 @@ func _ready():
 	generate_inventory_slots(inv.max_slots)
 	update_slots()
 	self.visible = false
-	print($NinePatchRect.custom_minimum_size)
-	print(slot_scene, grid_container.columns, panel_container.size)
 
 func generate_inventory_slots(slot_count: int):
 	for child in grid_container.get_children():

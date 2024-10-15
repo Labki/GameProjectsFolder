@@ -1,9 +1,11 @@
 extends BaseCharacter
 
 @onready var animator_node: AnimatedSprite2D = $sprite
-@onready var healthbar_node: ProgressBar = $health_bar
+@onready var healthbar_node = $UI/ui_control/ui_character/character_ui/bars_ui/healthbar
+@onready var manabar_node = $UI/ui_control/ui_character/character_ui/bars_ui/manabar
+@onready var expbar_node = $UI/ui_control/ui_character/character_ui/bars_ui/expbar
 @onready var attack_area_node: Area2D = $target_area
-@onready var ui = $UI/ui_control/ui_margin
+@onready var ui = $UI/ui_control/ui_inventory
 @onready var inventoryUI: InventoryUI = ui.get_node("inventory_ui")
 
 @export var inventory: Inventory
@@ -14,6 +16,7 @@ var targets_in_range: Array = []
 func _ready():
 	set_animator(animator_node)
 	set_healthbar(healthbar_node)
+	set_expbar(expbar_node)
 	_enter()
 	position = Vector2(125, 375)
 	base_speed = speed

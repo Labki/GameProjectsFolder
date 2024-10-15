@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://kjcpimewyayn"
+path="res://.godot/imported/character_pfp.aseprite-32fbf1df4bf112ae9cc5c6f3a7fbb366.res"
+
+[deps]
+
+source_file="res://Assets/AsepriteMade/AsepriteSheets/character_pfp.aseprite"
+dest_files=["res://.godot/imported/character_pfp.aseprite-32fbf1df4bf112ae9cc5c6f3a7fbb366.res"]
+
+[params]
+

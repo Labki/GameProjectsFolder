@@ -17,7 +17,7 @@ class_name BaseCharacter
 @export var crit_rate: float = 0.1
 @export var crit_dmg: float = 2.0
 @export var level: int = 1
-@export var experience: int = 0
+@export var experience: float = 0
 @export var experience_to_next_level: int = 100
 @export var experience_gain_rate: float = 1.0
 
@@ -38,16 +38,21 @@ var deny_movement: bool = false
 
 # Child Nodes
 var animator: AnimatedSprite2D
-var healthbar: ProgressBar
 var health_timer: Timer
 var damage_timer: Timer
+#region Progress Bars
+var healthbar
+var manabar
+var expbar
+#endregion
 
 var PlayAnimation = Global.playAnimation.new()
 #endregion
 #region Base Functions
 func _enter():
 	current_dir = "right"
-	update_health()
+	update_healthbar()
+	update_expbar()
 
 func _update(delta):
 	var _delta = delta
@@ -65,7 +70,7 @@ func set_animator(animator_node: AnimatedSprite2D) -> void:
 		animator.connect("animation_finished", Callable(PlayAnimation, "_on_animation_finished"))
 		animator.connect("animation_looped", Callable(PlayAnimation, "_on_animation_looped"))
 
-func set_healthbar(healthbar_node: ProgressBar) -> void:
+func set_healthbar(healthbar_node) -> void:
 	healthbar = healthbar_node
 	if healthbar:
 		for child in healthbar.get_children():
@@ -80,12 +85,15 @@ func set_healthbar(healthbar_node: ProgressBar) -> void:
 			damage_timer.wait_time = regen_cooldown
 			damage_timer.one_shot = true
 
+func set_expbar(expbar_node) -> void:
+	expbar = expbar_node
+
 #endregion
 #region Character Health
 # Take Damage from attacker
 func take_damage(amount: int) -> void:
 	health -= amount
-	update_health()
+	update_healthbar()
 	if damage_timer.is_stopped():
 		damage_timer.start()
 	else:
@@ -97,16 +105,20 @@ func take_damage(amount: int) -> void:
 # Health
 func heal(amount: int) -> void:
 	health += amount
-	update_health()
+	update_healthbar()
 	if health > max_health:
 		health = max_health
 
-func update_health():
+func update_healthbar():
 	healthbar.value = health * 100 / max_health
-	if health >= max_health:
+	if health >= max_health && !self.has_method("player"):
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
+
+func update_expbar():
+	if expbar && self.has_method("player"):
+		expbar.value = experience * 100 / experience_to_next_level
 
 func _start_health_regen():
 	if health < max_health and health > 0 and damage_timer.is_stopped():
@@ -160,12 +172,12 @@ func attack(_target: BaseCharacter) -> void:
 
 		await get_tree().process_frame
 #endregion
-
 #region Leveling System
 func gain_experience(target: BaseCharacter) -> void:
 	experience += int(target.max_health * experience_gain_rate) # Example calculation, adjust as necessary
 	if experience >= experience_to_next_level:
 		level_up()
+	update_expbar()
 
 func level_up() -> void:
 	level += 1
@@ -179,9 +191,8 @@ func level_up() -> void:
 	
 	#Heal character to full health on level up
 	#health = max_health
-	#update_health()
+	#update_healthbar()
 #endregion
-
 
 # The end of an era
 func die():
