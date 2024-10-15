@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgbjdx1wf3xqc"]
+
+[ext_resource type="FontVariation" uid="uid://b7gsrmexqt1v3" path="res://Assets/Fonts/uarFont.tres" id="1_81sf4"]
+[ext_resource type="Script" path="res://Scenes/Extra/ui/Labels/amount_text.gd" id="2_d8fqo"]
+
+[node name="amountText" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_81sf4")
+text = "Test text"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_d8fqo")

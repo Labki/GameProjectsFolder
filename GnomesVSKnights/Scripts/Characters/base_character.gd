@@ -111,14 +111,14 @@ func heal(amount: int) -> void:
 
 func update_healthbar():
 	healthbar.value = health * 100 / max_health
-	if health >= max_health && !self.has_method("player"):
+	if self.has_method("player"):
+		var label = healthbar.get_node("amountText")
+		label.text = str(health) + " / " + str(max_health) + " HP"
+		return
+	if health >= max_health:
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
-
-func update_expbar():
-	if expbar && self.has_method("player"):
-		expbar.value = experience * 100 / experience_to_next_level
 
 func _start_health_regen():
 	if health < max_health and health > 0 and damage_timer.is_stopped():
@@ -173,6 +173,12 @@ func attack(_target: BaseCharacter) -> void:
 		await get_tree().process_frame
 #endregion
 #region Leveling System
+func update_expbar():
+	if expbar && self.has_method("player"):
+		expbar.value = experience * 100 / experience_to_next_level
+		var label = expbar.get_node("amountText")
+		label.text = str(experience) + " / " + str(experience_to_next_level) + " EXP"
+
 func gain_experience(target: BaseCharacter) -> void:
 	experience += int(target.max_health * experience_gain_rate) # Example calculation, adjust as necessary
 	if experience >= experience_to_next_level:
