@@ -4,6 +4,7 @@ extends BaseCharacter
 @onready var healthbar_node = $UI/ui_control/ui_character/character_ui/bars_ui/healthbar
 @onready var manabar_node = $UI/ui_control/ui_character/character_ui/bars_ui/manabar
 @onready var expbar_node = $UI/ui_control/ui_character/character_ui/bars_ui/expbar
+@onready var charlvl_node = $UI/ui_control/ui_character/character_ui/image_ui/char_lvl
 @onready var attack_area_node: Area2D = $target_area
 @onready var ui = $UI/ui_control/ui_inventory
 @onready var inventoryUI: InventoryUI = ui.get_node("inventory_ui")
@@ -17,6 +18,7 @@ func _ready():
 	set_animator(animator_node)
 	set_healthbar(healthbar_node)
 	set_expbar(expbar_node)
+	set_charlvl(charlvl_node)
 	_enter()
 	position = Vector2(125, 375)
 	base_speed = speed

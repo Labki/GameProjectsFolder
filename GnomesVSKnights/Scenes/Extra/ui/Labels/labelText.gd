@@ -1,7 +1,7 @@
 extends Label
 
 # Load the FontVariation resource
-var resFont: FontVariation = preload("res://Assets/Fonts/uarFont.tres").duplicate()
+var resFont: FontVariation = preload("res://Resources/UI/Fonts/uarFont.tres").duplicate()
 @export var FontDescale = 300  # Scaling factor for adjusting font size
 
 func _ready() -> void:

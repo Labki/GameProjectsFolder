@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7wandlnmiyoa"]
+[gd_scene load_steps=4 format=3 uid="uid://b7wandlnmiyoa"]
 
 [ext_resource type="PackedScene" uid="uid://bm2wlv33vintu" path="res://Scenes/Extra/ui/character/character_image.tscn" id="1_2p250"]
 [ext_resource type="PackedScene" uid="uid://copbaai8dsx00" path="res://Scenes/Extra/ui/character/character_bars.tscn" id="2_e4o0h"]
+[ext_resource type="PackedScene" uid="uid://cgbjdx1wf3xqc" path="res://Scenes/Extra/ui/Labels/label_text.tscn" id="3_vpx36"]
 
 [node name="character_ui" type="Control"]
 layout_mode = 3
@@ -22,6 +23,24 @@ offset_right = 64.0
 offset_bottom = 64.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="char_lvl" type="MarginContainer" parent="image_ui"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -23.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = 13.0
+grow_horizontal = 0
+
+[node name="labelText" parent="image_ui/char_lvl" instance=ExtResource("3_vpx36")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = ""
+horizontal_alignment = 2
+FontDescale = 450
 
 [node name="bars_ui" parent="." instance=ExtResource("2_e4o0h")]
 layout_mode = 1
