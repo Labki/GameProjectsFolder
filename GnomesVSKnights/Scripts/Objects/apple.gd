@@ -8,9 +8,13 @@ var PlayAnimation = Global.playAnimation.new()
 func _init_interactable():
 	area_node = $InteractArea
 	PlayAnimation.play(animator, "default")
+	add_to_group("itemDropped")
 
 func get_amount() -> int:
 	return item_amount
+
+func set_amount(new_amount: int):
+	item_amount = new_amount
 
 func get_item() -> InventoryItem:
 	return item_data

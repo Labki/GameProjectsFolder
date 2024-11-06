@@ -44,6 +44,7 @@ var damage_timer: Timer
 var healthbar
 var manabar
 var expbar
+var charlvl
 #endregion
 
 var PlayAnimation = Global.playAnimation.new()
@@ -52,7 +53,7 @@ var PlayAnimation = Global.playAnimation.new()
 func _enter():
 	current_dir = "right"
 	update_healthbar()
-	update_expbar()
+	update_exp()
 
 func _update(delta):
 	var _delta = delta
@@ -88,6 +89,9 @@ func set_healthbar(healthbar_node) -> void:
 func set_expbar(expbar_node) -> void:
 	expbar = expbar_node
 
+func set_charlvl(charlvl_node) -> void:
+	charlvl = charlvl_node
+
 #endregion
 #region Character Health
 # Take Damage from attacker
@@ -112,7 +116,7 @@ func heal(amount: int) -> void:
 func update_healthbar():
 	healthbar.value = health * 100 / max_health
 	if self.has_method("player"):
-		var label = healthbar.get_node("amountText")
+		var label = healthbar.get_node("labelText")
 		label.text = str(health) + " / " + str(max_health) + " HP"
 		return
 	if health >= max_health:
@@ -173,17 +177,19 @@ func attack(_target: BaseCharacter) -> void:
 		await get_tree().process_frame
 #endregion
 #region Leveling System
-func update_expbar():
+func update_exp():
 	if expbar && self.has_method("player"):
 		expbar.value = experience * 100 / experience_to_next_level
-		var label = expbar.get_node("amountText")
-		label.text = str(experience) + " / " + str(experience_to_next_level) + " EXP"
+		var expLabel = expbar.get_node("labelText")
+		expLabel.text = str(experience) + " / " + str(experience_to_next_level) + " EXP"
+		var lvlLabel = charlvl.get_node("labelText")
+		lvlLabel.text = "Lvl " + str(level)
 
 func gain_experience(target: BaseCharacter) -> void:
 	experience += int(target.max_health * experience_gain_rate) # Example calculation, adjust as necessary
 	if experience >= experience_to_next_level:
 		level_up()
-	update_expbar()
+	update_exp()
 
 func level_up() -> void:
 	level += 1

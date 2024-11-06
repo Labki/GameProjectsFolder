@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bbyosmtgt5ydl" path="res://Assets/UI/player_ui/bars/healthbar/healthbar-frame.png" id="2_vamfv"]
 [ext_resource type="Texture2D" uid="uid://bllru1f0b5sh2" path="res://Assets/UI/player_ui/bars/healthbar/healthbar-color.png" id="3_5y85x"]
 [ext_resource type="Texture2D" uid="uid://xdko75asrtkt" path="res://Assets/UI/player_ui/bars/manabar/manabar-bg.png" id="4_s6pqm"]
-[ext_resource type="PackedScene" uid="uid://cgbjdx1wf3xqc" path="res://Scenes/Extra/ui/Labels/amount_text.tscn" id="4_w07qp"]
+[ext_resource type="PackedScene" uid="uid://cgbjdx1wf3xqc" path="res://Scenes/Extra/ui/Labels/label_text.tscn" id="4_w07qp"]
 [ext_resource type="Texture2D" uid="uid://dthl8d5qw20xh" path="res://Assets/UI/player_ui/bars/manabar/manabar-frame.png" id="5_rklnn"]
 [ext_resource type="Texture2D" uid="uid://dkbfju00vulfr" path="res://Assets/UI/player_ui/bars/manabar/manabar-color.png" id="6_5yair"]
 [ext_resource type="Texture2D" uid="uid://c7pkr552qlsl2" path="res://Assets/UI/player_ui/bars/expbar/expbar-bg.png" id="7_uh67c"]
@@ -43,13 +43,14 @@ patch_margin_top = 13
 patch_margin_right = 13
 patch_margin_bottom = 3
 
-[node name="amountText" parent="healthbar" instance=ExtResource("4_w07qp")]
+[node name="labelText" parent="healthbar" instance=ExtResource("4_w07qp")]
 layout_mode = 0
 offset_top = 1.0
 offset_right = 140.0
 offset_bottom = 19.0
 theme_override_font_sizes/font_size = 13
 text = ""
+theme_override_font_sizes/font_size = 13
 
 [node name="regen_timer" type="Timer" parent="healthbar"]
 wait_time = 2.0
@@ -81,12 +82,14 @@ patch_margin_top = 3
 patch_margin_right = 13
 patch_margin_bottom = 13
 
-[node name="amountText" parent="manabar" instance=ExtResource("4_w07qp")]
+[node name="labelText" parent="manabar" instance=ExtResource("4_w07qp")]
+layout_mode = 0
 offset_top = 1.0
 offset_right = 140.0
 offset_bottom = 19.0
 theme_override_font_sizes/font_size = 13
 text = "105 / 105 Mana"
+theme_override_font_sizes/font_size = 13
 
 [node name="expbar" type="TextureProgressBar" parent="."]
 layout_mode = 1
@@ -110,10 +113,12 @@ patch_margin_left = 13
 patch_margin_top = 3
 patch_margin_right = 13
 
-[node name="amountText" parent="expbar" instance=ExtResource("4_w07qp")]
+[node name="labelText" parent="expbar" instance=ExtResource("4_w07qp")]
+layout_mode = 0
 offset_top = 1.0
 offset_right = 115.0
 offset_bottom = 11.0
 theme_override_font_sizes/font_size = 6
 text = ""
+theme_override_font_sizes/font_size = 6
 FontDescale = 400

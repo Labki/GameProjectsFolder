@@ -852,12 +852,10 @@ flaming = true
 
 [node name="apple" parent="Interactables/Apples" instance=ExtResource("4_gqjrr")]
 position = Vector2(205, 295)
-item_amount = 3
 collectable = true
 
 [node name="apple2" parent="Interactables/Apples" instance=ExtResource("4_gqjrr")]
 position = Vector2(150, 250)
-item_amount = 2
 collectable = true
 
 [node name="Friends" type="Node2D" parent="."]
