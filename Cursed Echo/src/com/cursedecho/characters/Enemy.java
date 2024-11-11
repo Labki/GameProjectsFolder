@@ -51,6 +51,7 @@ public abstract class Enemy extends BaseCharacter {
         if (distance < 200) {
             state = State.CHASE;
         }
+        move(0, 0);
         setAnimation(getIdleFrames());
     }
 
