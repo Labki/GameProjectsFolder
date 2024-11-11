@@ -5,30 +5,81 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a10f3d52-9074-4497-83e6-46568037cc63" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/BaseCharacter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/Enemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/enemies/Bat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/enemies/Golem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/enemies/Witch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/enemies/Wolf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/config/UserSettings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/constants/DisplayRatio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/constants/DisplayResolution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/helpers/BackgroundHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/helpers/CreateUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/helpers/CustomDecoration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/helpers/MenuPosition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/scenes/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/scenes/GraphicsSettings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/scenes/Settings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/scenes/SoundSettings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/css/variables.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/img/menu/menu-bg-16x10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Cursed Echo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Cursed Echo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labki/cursedecho/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GnomesVSKnights/Scenes/Objects/apple.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/../GnomesVSKnights/Scenes/Objects/apple.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/Contact.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0000_9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0001_8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0002_7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0003_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0004_Lights.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0005_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0006_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0007_Lights.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0008_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0009_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0010_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0011_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/PSD/Background.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/Preview/Background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/You may also like/Pixel Art Forest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/You may also like/Pixel Art Plataformer Painted Style.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/You may also like/Pixel Art Runner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/You may also like/Pixel Art Snowy Forest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/changelog.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/assets/Free Pixel Art Forest/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/com/cursedecho/helpers/BackgroundHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cursed Echo/com/cursedecho/helpers/BackgroundHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/com/cursedecho/scenes/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cursed Echo/com/cursedecho/scenes/Game$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/com/cursedecho/scenes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cursed Echo/com/cursedecho/scenes/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/Contact.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0000_9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0001_8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0002_7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0003_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0004_Lights.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0005_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0006_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0007_Lights.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0008_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0009_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0010_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0011_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/PSD/Background.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/Preview/Background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/You may also like/Pixel Art Forest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/You may also like/Pixel Art Plataformer Painted Style.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/You may also like/Pixel Art Runner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/You may also like/Pixel Art Snowy Forest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/changelog.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cursed Echo/resources/assets/Free Pixel Art Forest/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/cursedecho/characters/BaseCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/BaseCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/cursedecho/helpers/BackgroundHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/cursedecho/helpers/BackgroundHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/cursedecho/scenes/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/cursedecho/scenes/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/Contact.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/Contact.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0000_9.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0000_9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0001_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0001_8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0002_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0002_7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0003_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0003_6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0004_Lights.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0004_Lights.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0005_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0005_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0006_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0006_4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0007_Lights.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0007_Lights.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0008_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0008_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0009_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0009_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0010_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0010_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PNG/Background layers/Layer_0011_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PNG/Background layers/Layer_0011_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/PSD/Background.psd" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/PSD/Background.psd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/Preview/Background.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/Preview/Background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/You may also like/Pixel Art Forest.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/You may also like/Pixel Art Forest.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/You may also like/Pixel Art Plataformer Painted Style.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/You may also like/Pixel Art Plataformer Painted Style.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/You may also like/Pixel Art Runner.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/You may also like/Pixel Art Runner.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/You may also like/Pixel Art Snowy Forest.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/You may also like/Pixel Art Snowy Forest.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/changelog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/changelog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/license.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/license.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/assets/Free Pixel Art Forest/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/assets/Forest/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-settings.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,13 +120,13 @@
     &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Labki/Github/Labki/GameProjectsFolder/Cursed Echo/src/resources/img/menu&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/jdk-18.0.2.1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;discord-application&quot;,
@@ -132,6 +183,9 @@
       <workItem from="1731196295383" duration="2493000" />
       <workItem from="1731227413357" duration="49530000" />
       <workItem from="1731283560182" duration="6513000" />
+      <workItem from="1731319030981" duration="17000" />
+      <workItem from="1731319057460" duration="505000" />
+      <workItem from="1731321675991" duration="1364000" />
     </task>
     <servers />
   </component>

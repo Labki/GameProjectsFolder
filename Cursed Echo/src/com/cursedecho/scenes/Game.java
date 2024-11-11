@@ -3,9 +3,11 @@ package com.cursedecho.scenes;
 import com.cursedecho.Main;
 import com.cursedecho.characters.*;
 import com.cursedecho.characters.enemies.*;
+import com.cursedecho.helpers.BackgroundHelper;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Bounds;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import java.util.*;
 
@@ -22,16 +24,18 @@ public class Game extends Pane {
     }
 
     private void setupGameObjects() {
-        player = new Player(128,128,100,1,20,1.5,50,10);
+        BackgroundHelper.setBackground(this);
+
+        player = new Player(128,128,100,5,20,1.5,50,10);
         player.setTranslateX(100);
-        player.setTranslateY(100);
+        player.setTranslateY(700);
         this.getChildren().add(player);
 
         // Initialize enemies with positions
-        addEnemy(new Bat(player), 500, 500);
-        addEnemy(new Wolf(player), 600, 600);
-        addEnemy(new Golem(player), 700, 700);
-        addEnemy(new Witch(player), 800, 800);
+        addEnemy(new Bat(player), 600, 700);
+        addEnemy(new Wolf(player), 750, 700);
+        addEnemy(new Golem(player), 950, 700);
+        addEnemy(new Witch(player), 1100, 700);
     }
 
     private void addEnemy(Enemy enemy, double x, double y) {
@@ -78,8 +82,8 @@ public class Game extends Pane {
         double moveX = 0;
         double moveY = 0;
 
-        if (activeKeys.contains(KeyCode.W)) moveY -= 1;
-        if (activeKeys.contains(KeyCode.S)) moveY += 1;
+//        if (activeKeys.contains(KeyCode.W)) moveY -= 1;
+//        if (activeKeys.contains(KeyCode.S)) moveY += 1;
         if (activeKeys.contains(KeyCode.A)) moveX -= 1;
         if (activeKeys.contains(KeyCode.D)) moveX += 1;
 

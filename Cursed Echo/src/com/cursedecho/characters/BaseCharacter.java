@@ -92,7 +92,7 @@ public abstract class BaseCharacter extends Group {
 
     public void move(double dx, double dy) {
         setTranslateX(getTranslateX() + dx * speed);
-        setTranslateY(getTranslateY() + dy * speed);
+//        setTranslateY(getTranslateY() + dy * speed);
         animate();
     }
 
