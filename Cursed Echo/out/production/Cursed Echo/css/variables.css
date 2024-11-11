@@ -1,0 +1,12 @@
+/* variables.css */
+.root {
+    -fx-primary-color: #bbb;
+    -fx-primary-color-opacity: #bbbb;
+    -fx-secondary-color: #999;
+    -fx-secondary-color-opacity: #9999;
+    -fx-tertiary-color: #777;
+    -fx-tertiary-color-opacity: #7777;
+    -fx-bg-black-15: rgba(0, 0, 0, 0.15);
+    -fx-bg-black-25: rgba(0, 0, 0, 0.25);
+    -fx-bg-black-40: rgba(0, 0, 0, 0.4);
+}

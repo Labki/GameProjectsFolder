@@ -5,22 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a10f3d52-9074-4497-83e6-46568037cc63" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/labki/cursedecho/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AAB - JavaFX/Game Dev Project/Cursed Echo/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AAB - JavaFX/Game Dev Project/Cursed Echo/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AAB - JavaFX/Game Dev Project/Cursed Echo/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AAB - JavaFX/Game Dev Project/Cursed Echo/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AAB - JavaFX/Game Dev Project/Cursed Echo/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AAB - JavaFX/Game Dev Project/Cursed Echo/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AAB - JavaFX/Game Dev Project/Cursed Echo/Cursed Echo.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AAB - JavaFX/Game Dev Project/Cursed Echo/src/Images/menu-bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AAB - JavaFX/Game Dev Project/Cursed Echo/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AAB - JavaFX/Game Dev Project/Cursed Echo/src/menu-bg.jpg" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/BaseCharacter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/Enemy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/enemies/Bat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/enemies/Golem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/enemies/Witch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/characters/enemies/Wolf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/config/UserSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/constants/DisplayRatio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/constants/DisplayResolution.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/helpers/BackgroundHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/helpers/CreateUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/helpers/CustomDecoration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/helpers/MenuPosition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/scenes/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/scenes/GraphicsSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/scenes/Settings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/cursedecho/scenes/SoundSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/css/variables.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/img/menu/menu-bg-16x10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/labki/cursedecho/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GnomesVSKnights/Scenes/Objects/apple.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/../GnomesVSKnights/Scenes/Objects/apple.tscn" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -32,40 +52,57 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2oW5RC8YFs1qhViuLVSjgTz9BzI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Cursed Echo.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Labeat Zekaj/Github/labki/GameProjectsFolder/Cursed Echo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Cursed Echo.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Labki/Github/Labki/GameProjectsFolder/Cursed Echo/src/resources/img/menu&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;discord-application&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Labki\Github\Labki\GameProjectsFolder\Cursed Echo\src\resources\img\menu" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Labki\Github\Labki\GameProjectsFolder\Cursed Echo\src\resources\img\menu" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cursedecho.characters.enemies" />
+      <recent name="com.cursedecho.constants" />
+      <recent name="com.cursedecho.scenes" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Cursed Echo" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.labki.cursedecho.HelloApplication" />
-      <module name="cursedecho" />
-      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../../../../../../javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml,javafx.web,javafx.media,javafx.swing " />
+      <option name="MAIN_CLASS_NAME" value="com.cursedecho.Main" />
+      <module name="Cursed Echo" />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../../../../../../javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -88,6 +125,13 @@
       <option name="presentableId" value="Default" />
       <updated>1730972481520</updated>
       <workItem from="1730972482504" duration="704000" />
+      <workItem from="1731011387836" duration="12531000" />
+      <workItem from="1731059084864" duration="33910000" />
+      <workItem from="1731117910432" duration="6249000" />
+      <workItem from="1731153232788" duration="3962000" />
+      <workItem from="1731196295383" duration="2493000" />
+      <workItem from="1731227413357" duration="49530000" />
+      <workItem from="1731283560182" duration="6513000" />
     </task>
     <servers />
   </component>
