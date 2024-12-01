@@ -4,9 +4,9 @@ import com.cursedecho.config.UserSettings;
 import com.cursedecho.scenes.*;
 import com.cursedecho.helpers.*;
 import javafx.application.Application;
-import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -35,12 +35,11 @@ public class Main extends Application {
         primaryStage.setScene(scene);
 
         primaryStage.setFullScreenExitHint("");
-        primaryStage.setFullScreenExitKeyCombination(null);
+        primaryStage.setFullScreenExitKeyCombination(KeyCodeCombination.keyCombination("F11"));
         primaryStage.setResizable(false);
 
         primaryStage.show();
         primaryStage.setFullScreen(UserSettings.fullscreenEnabled);
-
         showMainMenu();
     }
 

@@ -4,14 +4,12 @@ import com.cursedecho.Main;
 import com.cursedecho.config.UserSettings;
 import com.cursedecho.constants.*;
 import com.cursedecho.helpers.*;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
-import java.util.Objects;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.stage.*;
 
 public class GraphicsSettings extends VBox {
 
@@ -33,21 +31,21 @@ public class GraphicsSettings extends VBox {
 
         // Display Fields with Labels
         HBox resolutionDropdownBox = CreateUI.createLabeledControl("Resolution: ", resolutionDropdown);
-        HBox aspectRatioDropdownBox = CreateUI.createLabeledControl("AspectRatio: ", aspectRatioDropdown);
+        HBox aspectRatioDropdownBox = CreateUI.createLabeledControl("Aspect Ratio: ", aspectRatioDropdown);
         HBox fullscreenChkBox = CreateUI.createLabeledControl("Fullscreen: ", fullscreenCheckbox);
 
         // Resolution Dropdown
-        updateResolutionDropdown(UserSettings.preferredAspectRatio, UserSettings.fullscreenEnabled);
+        updateResolutionDropdown(UserSettings.preferredAspectRatio);
         resolutionDropdown.setValue(UserSettings.screenWidth + "x" + UserSettings.screenHeight);
 
         // Aspect Ratio Dropdown
         aspectRatioDropdown.getItems().addAll(DisplayRatio.getAll());
         aspectRatioDropdown.setValue(UserSettings.preferredAspectRatio);
-        aspectRatioDropdown.setOnAction(e -> updateResolutionDropdown(aspectRatioDropdown.getValue(), fullscreenCheckbox.isSelected()));
+        aspectRatioDropdown.setOnAction(e -> updateResolutionDropdown(aspectRatioDropdown.getValue()));
 
         // Fullscreen Checkbox
         fullscreenCheckbox.setSelected(UserSettings.fullscreenEnabled);
-        fullscreenCheckbox.setOnAction(e -> updateResolutionDropdown(aspectRatioDropdown.getValue(), fullscreenCheckbox.isSelected()));
+        fullscreenCheckbox.setOnAction(e -> updateResolutionDropdown(aspectRatioDropdown.getValue()));
 
         // Buttons
         Button applyButton = CreateUI.createButton("Apply", this::applySettings);
@@ -59,9 +57,9 @@ public class GraphicsSettings extends VBox {
         getChildren().addAll(resolutionDropdownBox, aspectRatioDropdownBox, fullscreenChkBox, backOrApplyButtonBox);
     }
 
-    private void updateResolutionDropdown(String aspectRatio, Boolean fullscreen) {
+    private void updateResolutionDropdown(String aspectRatio) {
         resolutionDropdown.getItems().clear();
-        resolutionDropdown.getItems().addAll(DisplayResolution.getResolutions(aspectRatio, fullscreen));
+        resolutionDropdown.getItems().addAll(DisplayResolution.getResolutions(aspectRatio));
         resolutionDropdown.setValue(resolutionDropdown.getItems().get(0));
     }
 
@@ -83,7 +81,7 @@ public class GraphicsSettings extends VBox {
         UserSettings.saveSettings();
 
         if (UserSettings.fullscreenEnabled) {
-            setFullscreen();
+            setFullscreen(UserSettings.screenWidth, UserSettings.screenHeight);
         } else {
             setWindowed(UserSettings.screenWidth, UserSettings.screenHeight);
         }
@@ -97,23 +95,20 @@ public class GraphicsSettings extends VBox {
         return String.format("/img/menu/menu-bg-%s.png", formattedRatio);
     }
 
-    private void setFullscreen() {
+    private void setFullscreen(int targetWidth, int targetHeight) {
         primaryStage.setFullScreen(true);
-        if (Objects.equals(UserSettings.preferredAspectRatio, DisplayRatio.RATIO_4_3)) {
-            mainApp.getRoot().setScaleX(1.35);
-        } else if (Objects.equals(UserSettings.preferredAspectRatio, DisplayRatio.RATIO_16_10)) {
-            mainApp.getRoot().setScaleX(1.15);
-        } else {
-            mainApp.getRoot().setScaleX(1.0);
-        }
+        double scaleX = targetWidth / DisplayUtils.getEffectiveScreenWidth();
+        double scaleY = targetHeight / DisplayUtils.getEffectiveScreenHeight();
+        primaryStage.setRenderScaleX(scaleX * Screen.getPrimary().getOutputScaleX());
+        primaryStage.setRenderScaleY(scaleY * Screen.getPrimary().getOutputScaleY());
     }
 
     private void setWindowed(int targetWidth, int targetHeight) {
         primaryStage.setFullScreen(false);
-        mainApp.getRoot().setScaleX(1.0);
-        mainApp.getRoot().setScaleY(1.0);
-        primaryStage.setWidth(targetWidth);
-        primaryStage.setHeight(targetHeight);
+        primaryStage.setWidth(targetWidth / Screen.getPrimary().getOutputScaleX());
+        primaryStage.setHeight(targetHeight / Screen.getPrimary().getOutputScaleY());
+        primaryStage.setRenderScaleX(Screen.getPrimary().getOutputScaleX());
+        primaryStage.setRenderScaleY(Screen.getPrimary().getOutputScaleY());
+        primaryStage.centerOnScreen();
     }
-
 }
