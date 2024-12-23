@@ -5,9 +5,9 @@ import java.util.*;
 
 public class Player extends BaseCharacter {
     // Animations
-    private List<Image> idleFrames = new ArrayList<>();
-    private List<Image> runFrames = new ArrayList<>();
-    private List<Image> attackFrames = new ArrayList<>();
+    private final List<Image> idleFrames = new ArrayList<>();
+    private final List<Image> runFrames = new ArrayList<>();
+    private final List<Image> attackFrames = new ArrayList<>();
 
     public Player(int width, int height, int health, double speed, int attackPower, double attackSpeed, double attackRange, int armor) {
         super(width, height, health, speed, attackPower, attackSpeed, attackRange, armor);
@@ -24,14 +24,22 @@ public class Player extends BaseCharacter {
     }
 
     public void attackEnemy(List<Enemy> enemies) {
-        for (Enemy enemy : enemies) {
+        Iterator<Enemy> iterator = enemies.iterator();
+        while (iterator.hasNext()) {
+            Enemy enemy = iterator.next();
             double distance = Math.hypot(getTranslateX() - enemy.getTranslateX(),
                     getTranslateY() - enemy.getTranslateY());
             if (distance <= getAttackRange() && !isAttacking()) {
+                System.out.println(distance + " " + enemy);
                 performAttack(enemy);
+                if (enemy.isDead()) {
+                    System.out.println("Enemy killed: " + enemy);
+                    iterator.remove();
+                }
             }
         }
     }
+
 
     public void updateAttackAnimation(List<Enemy> enemies) {
         if (isAttacking()) {
@@ -56,5 +64,12 @@ public class Player extends BaseCharacter {
             setAnimation((dx != 0 || dy != 0) ? runFrames : idleFrames);
         }
         super.move(dx, dy);
+    }
+
+    public void jump() {
+        if (onGround) {
+            velocityY = -10;
+            onGround = false;
+        }
     }
 }

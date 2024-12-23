@@ -1,5 +1,9 @@
 package com.cursedecho.config;
 
+import com.cursedecho.helpers.DisplayUtils;
+import com.cursedecho.utils.GetAspectRatio;
+import javafx.stage.Screen;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,15 +12,17 @@ import java.util.Properties;
 public class UserSettings {
 
     // Default screen settings
-    public static final int DEFAULT_SCREEN_WIDTH = 1920;
-    public static final int DEFAULT_SCREEN_HEIGHT = 1080;
-    public static int screenWidth = DEFAULT_SCREEN_WIDTH;
-    public static int screenHeight = DEFAULT_SCREEN_HEIGHT;
-    public static String preferredAspectRatio = "16:9";
+    public static int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
+    public static int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
+    public static String preferredAspectRatio = GetAspectRatio.calculate(screenWidth, screenHeight);
     public static boolean fullscreenEnabled = true;
 
     // Background settings
-    public static String backgroundPath = "/img/menu/menu-bg-16x9.png";
+    private static String selectBackgroundImagePath(String aspectRatio) {
+        String formattedRatio = aspectRatio.replace(":", "x");
+        return String.format("/img/menu/menu-bg-%s.png", formattedRatio);
+    }
+    public static String backgroundPath = selectBackgroundImagePath(preferredAspectRatio);
 
     // Default audio settings
     public static boolean soundEnabled = true;
@@ -35,8 +41,8 @@ public class UserSettings {
             props.load(input);
 
             // Load screen settings
-            screenWidth = Integer.parseInt(props.getProperty("screenWidth", String.valueOf(DEFAULT_SCREEN_WIDTH)));
-            screenHeight = Integer.parseInt(props.getProperty("screenHeight", String.valueOf(DEFAULT_SCREEN_HEIGHT)));
+            screenWidth = Integer.parseInt(props.getProperty("screenWidth", String.valueOf(screenWidth)));
+            screenHeight = Integer.parseInt(props.getProperty("screenHeight", String.valueOf(screenHeight)));
             preferredAspectRatio = props.getProperty("preferredAspectRatio", String.valueOf(preferredAspectRatio));
             fullscreenEnabled = Boolean.parseBoolean(props.getProperty("fullscreenEnabled", String.valueOf(fullscreenEnabled)));
 

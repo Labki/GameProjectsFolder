@@ -1,6 +1,5 @@
 package com.cursedecho.characters;
 
-import com.cursedecho.characters.enemies.Bat;
 import javafx.scene.Group;
 import javafx.scene.image.*;
 import java.util.*;
@@ -23,6 +22,12 @@ public abstract class BaseCharacter extends Group {
 
     protected boolean isAttacking = false;
     protected long lastAttackTime = 0;
+
+    // Gravity
+    private static final double TERMINAL_VELOCITY = 1.0;
+    protected double velocityY = 0; // Vertical velocity
+    protected static final double GRAVITY = 0.98; // Gravity constant
+    protected boolean onGround = false;
 
     public BaseCharacter(int width, int height, int health, double speed, int attackPower, double attackSpeed, double attackRange,  int armor) {
         // Base fields
@@ -91,9 +96,23 @@ public abstract class BaseCharacter extends Group {
     }
 
     public void move(double dx, double dy) {
+        if (!onGround) {
+            applyGravity();
+        }
         setTranslateX(getTranslateX() + dx * speed);
-//        setTranslateY(getTranslateY() + dy * speed);
         animate();
+    }
+
+    public void applyGravity() {
+        if (!isOnGround()) {
+            velocityY += GRAVITY * 0.5;
+            velocityY = Math.min(velocityY, TERMINAL_VELOCITY);
+            setTranslateY(getTranslateY() + velocityY);
+        }
+    }
+
+    public void stopVerticalMovement() {
+        velocityY = 0;
     }
 
     public void takeDamage(double amount) {
@@ -119,6 +138,14 @@ public abstract class BaseCharacter extends Group {
     public boolean isAttacking() {
         return isAttacking;
     }
+    public boolean isOnGround() {
+        return onGround;
+    }
+    public void setOnGround(boolean onGround) {
+        this.onGround = onGround;
+    }
+
+
 
     public void onCollisionWith(BaseCharacter other) {
     }

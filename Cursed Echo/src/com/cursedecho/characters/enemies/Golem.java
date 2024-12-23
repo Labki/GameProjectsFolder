@@ -11,7 +11,7 @@ public class Golem extends Enemy {
     private List<Image> attackFrames = new ArrayList<>();
 
     public Golem(Player player) {
-        super(128,128,30,0.1,5,0.2,30,40, player);
+        super(128,128,30,0.5,5,0.2,30,40, player);
         state = State.IDLE;
 
         loadFrames(idleFrames, "/assets/Golem/GolemIdle_strip.png", 12);

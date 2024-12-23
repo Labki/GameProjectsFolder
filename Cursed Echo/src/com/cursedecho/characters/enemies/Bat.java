@@ -11,7 +11,7 @@ public class Bat extends Enemy {
     private List<Image> attackFrames = new ArrayList<>();
 
     public Bat(Player player) {
-        super(128,128,25,1.2,5,0.7,30,0, player);
+        super(128,128,25,0.7,5,0.7,30,0, player);
         state = State.IDLE;
 
         loadFrames(idleFrames, "/assets/Bat/BatFlight_strip.png", 8);

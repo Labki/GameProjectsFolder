@@ -11,7 +11,7 @@ public class Witch extends Enemy {
     private List<Image> attackFrames = new ArrayList<>();
 
     public Witch(Player player) {
-        super(128,128,50,0.4,7,0.5, 30,10, player);
+        super(128,128,50,0.7,7,0.5, 30,10, player);
         state = State.IDLE;
 
         loadFrames(idleFrames, "/assets/Witch/WitchIdle_strip.png", 7);

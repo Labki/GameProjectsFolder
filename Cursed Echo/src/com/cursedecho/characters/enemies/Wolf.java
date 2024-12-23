@@ -11,7 +11,7 @@ public class Wolf extends Enemy {
     private List<Image> attackFrames = new ArrayList<>();
 
     public Wolf(Player player) {
-        super(128,128,50,1,5,1,30,5, player);
+        super(128,128,50,0.8,5,1,30,5, player);
         state = State.IDLE;
 
         loadFrames(idleFrames, "/assets/Wolf/WolfIdle_strip.png", 12);
